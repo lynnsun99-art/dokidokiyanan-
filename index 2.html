@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8edf2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="心动来电">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>心动来电｜闫桉恋爱模拟</title>
+<style>
+:root{--pink:#e98eaf;--rose:#f8dce7;--ink:#352831;--muted:#9a8791;--bg:#faf5f8;--line:#f0e2e9;--white:#fff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(145deg,#faedf3,#eee8f7);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);display:flex;justify-content:center;align-items:center;padding:14px}
+.phone{width:100%;max-width:430px;height:min(900px,96vh);min-height:620px;border:8px solid #2f2930;border-radius:38px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;position:relative;box-shadow:0 24px 75px #50324435}
+.status{height:28px;padding:7px 19px 0;display:flex;justify-content:space-between;background:#fff;font-size:11px;font-weight:700}
+.top{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-bottom:1px solid var(--line)}
+.avatar{width:43px;height:43px;border-radius:50%;background:linear-gradient(140deg,#efb6cc,#c5b6e8);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.topinfo{flex:1;min-width:0}.name{font-size:15px;font-weight:800}.sub{font-size:10px;color:var(--muted);margin-top:3px}.topbtn{border:0;border-radius:12px;background:#fbf1f6;color:#9c607a;padding:9px 10px;font-size:16px}
+.page{flex:1;overflow:auto;padding:13px 12px 10px}.date{text-align:center;color:#a5969e;font-size:10px;margin:3px 0 13px}
+.disclaimer{font-size:10px;line-height:1.55;color:#98778a;background:#fff7fb;border:1px solid #f1dce5;border-radius:12px;padding:9px 10px;margin-bottom:13px}
+.msg{display:flex;gap:7px;align-items:flex-end;margin:10px 0}.msg.me{justify-content:flex-end}.mini{width:26px;height:26px;border-radius:50%;background:#e8d8ef;display:grid;place-items:center;font-size:12px;flex-shrink:0}
+.wrap{max-width:80%}.bubble{font-size:12px;line-height:1.58;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px 12px;border-radius:16px;background:#fff;box-shadow:0 2px 7px #593c4c0a}.msg.them .bubble{border-bottom-left-radius:5px}.msg.me .bubble{background:#f4cede;border-bottom-right-radius:5px}.stamp{font-size:9px;color:#a99aa2;margin:3px 4px 0}.voice{border:0;background:#fff;border-radius:15px;padding:11px 13px;display:flex;align-items:center;gap:10px;color:#6e4c5c;font-size:12px}.voice .wave{letter-spacing:2px;color:#d7799c}.typing{display:none;color:#a58294;font-size:10px;margin:7px 0 12px 33px}
+.storybar{background:#fff7fb;border-top:1px solid var(--line);padding:8px 11px 9px}.storyhead{display:flex;justify-content:space-between;font-size:10px;color:#9c7a8b;margin-bottom:7px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:7px}.choice{border:1px solid #efcddd;border-radius:12px;background:#fff;padding:10px 8px;text-align:left;color:#7c5065;font-size:11px;line-height:1.4;min-height:43px}.composer{display:flex;gap:7px;align-items:center;padding:8px 10px 10px;background:#fff}.composer input{min-width:0;flex:1;border:0;border-radius:18px;background:#f8f1f5;padding:12px 13px;font-size:12px;outline:none}.send{width:38px;height:38px;border:0;border-radius:50%;background:var(--pink);color:#fff;font-size:17px}
+.nav{display:flex;justify-content:space-around;align-items:center;height:47px;background:#fff;border-top:1px solid var(--line)}.nav button{border:0;background:none;color:#a18d98;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px}.nav button span{font-size:17px}.nav button.active{color:#d66d96;font-weight:800}
+.panel{display:none;flex:1;overflow:auto;padding:17px 14px}.panel h2{font-size:19px;margin:0 0 6px}.lead{font-size:11px;color:var(--muted);line-height:1.65}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px;margin:11px 0}.row{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin:6px 0}.meter{height:7px;border-radius:9px;background:#f3e3eb;overflow:hidden;margin:8px 0}.fill{height:100%;width:24%;background:linear-gradient(90deg,#e98eaf,#bca4e8);transition:width .3s}.hero{height:145px;border-radius:17px;background:linear-gradient(140deg,#f5c8d9,#d9c9ef,#fae8ed);display:grid;place-items:center;font-size:46px;margin:12px 0}.btn{border:1px solid #edcbd9;background:#fff8fb;color:#8e5870;padding:10px 12px;border-radius:12px;font-size:11px;margin:4px 3px 0 0}.primary{border:0;background:var(--pink);color:#fff;font-weight:700;padding:11px 13px;border-radius:12px;font-size:12px}.full{width:100%;margin-top:7px}.toast{display:none;position:absolute;z-index:5;top:83px;left:50%;transform:translateX(-50%);background:#382d35;color:#fff;border-radius:18px;padding:9px 13px;font-size:11px;white-space:nowrap}
+.modalback{display:none;position:absolute;inset:0;background:#241b2480;z-index:9;align-items:center;justify-content:center;padding:22px}.modal{background:#fff;border-radius:22px;padding:19px;width:100%}.modal h3{margin:0 0 8px}.modal p{font-size:12px;color:#806f79;line-height:1.7}
+@media(max-height:700px){.phone{height:97vh;min-height:0}.page{padding-top:8px}.storybar{padding:6px 9px}.choice{padding:7px}.nav{height:40px}}
+</style>
+</head>
+<body>
+<div class="phone">
+ <div class="status"><span id="clock">9:41</span><span>●●●　▰ 98%</span></div>
+ <header class="top"><div class="avatar">✦</div><div class="topinfo"><div class="name" id="headerName">闫桉 · 私聊</div><div class="sub" id="presence">在线 · 虚构恋爱模拟</div></div><button class="topbtn" onclick="fakeCall()">♧</button><button class="topbtn" onclick="showToast('聊天详情：你们的专属小空间 ♡')">⋯</button></header>
+ <div class="toast" id="toast"></div>
+ <main class="page" id="chatPage">
+  <div class="date" id="dateLine">今天 · 21:17</div>
+  <div class="disclaimer">💗 粉丝向虚构恋爱模拟。角色剧情为创作，不代表闫桉本人的真实私生活、私下言行或真实关系。</div>
+  <div id="messages"></div><div class="typing" id="typing">对方正在输入……</div>
+ </main>
+ <section class="panel" id="relationship">
+  <h2>你们的关系 💞</h2><div class="lead">每一次选择都会影响剧情走向。当前进度保存在这台设备的浏览器中。</div>
+  <div class="hero">🌙 💌</div>
+  <div class="card"><div class="row"><span>心动指数</span><b id="affectionText">24 / 100</b></div><div class="meter"><div class="fill" id="affectionBar"></div></div><div class="row"><span>当前关系</span><b id="stage">刚刚熟悉</b></div><div class="row"><span>连续聊天</span><b id="streak">第 1 天</b></div><div class="row"><span>解锁回忆</span><b id="memoryCount">1 段</b></div></div>
+  <div class="card"><b style="font-size:13px">📖 恋爱章节</b><p class="lead" id="chapterText">第一章：练习结束后的消息。慢慢认识彼此，从一句关心开始。</p><button class="primary full" onclick="startStory()">继续主线剧情</button></div>
+  <button class="btn" onclick="showMemory()">📷 回忆相册</button><button class="btn" onclick="showToast('礼物剧情会在后续版本扩展 🎁')">🎁 准备礼物</button>
+ </section>
+ <section class="panel" id="moments">
+  <h2>他的动态 ✨</h2><div class="lead">虚构的社交动态页面，用来营造恋爱模拟的手机体验。</div>
+  <div class="card"><div style="font-size:10px;color:#a08b96">闫桉 · 模拟动态 · 20:46</div><div class="hero" style="height:115px">🌃 🎧</div><b style="font-size:13px">练习结束，夜风刚刚好。</b><p class="lead">如果有人也在看同一片夜空就好了。</p><button class="btn" id="likeBtn" onclick="likeMoment()">♡ 点赞</button><button class="btn" onclick="showToast('评论区正在筹备中')">评论</button></div>
+  <div class="card"><div style="font-size:10px;color:#a08b96">模拟动态 · 昨天</div><b style="font-size:13px">今天也要加油。</b><p class="lead">把一点点努力累积起来，总会看到变化。</p><button class="btn" onclick="showToast('已收藏这条动态')">☆ 收藏</button></div>
+ </section>
+ <section class="panel" id="settings">
+  <h2>手机设置 ⚙️</h2><div class="lead">自定义昵称、存档和通知体验。</div>
+  <div class="card"><b style="font-size:13px">聊天显示名称</b><input id="nicknameInput" value="闫桉" style="display:block;width:100%;margin:10px 0;padding:11px;border:1px solid #ead8e1;border-radius:11px"><button class="primary full" onclick="saveNickname()">保存昵称</button></div>
+  <div class="card"><b style="font-size:13px">主动消息</b><p class="lead">开启后，页面保持打开时，角色可能会主动发来剧情消息。浏览器关闭后不会在后台推送；正式 App 需另接推送服务。</p><button class="btn" id="notifyBtn" onclick="toggleProactive()">主动消息：开启</button><button class="btn" onclick="sendProactive(true)">现在收到一条消息</button></div>
+  <div class="card"><b style="font-size:13px">存档管理</b><p class="lead" id="saveInfo">存档状态：本地自动保存</p><button class="btn" onclick="saveGame(true)">立即保存</button><button class="btn" onclick="exportSave()">导出存档文件</button><button class="btn" onclick="document.getElementById('importSaveFile').click()">导入存档文件</button><input id="importSaveFile" type="file" accept=".json,application/json" style="display:none" onchange="importSave(event)"><button class="btn" onclick="resetGame()">重新开始</button></div>
+  <div class="card"><b style="font-size:13px">关于本版本</b><p class="lead">此版本是可交互前端原型：支持聊天、分支回复、章节、关系数值、主动消息模拟与本地存档。AI自由对话、真实音频、系统级通知和独立安装包需要后续接入服务并打包。</p></div>
+ </section>
+ <div class="storybar" id="storybar"><div class="storyhead"><span>选择你的回复</span><span id="storyLabel">第一章 · 练习结束</span></div><div class="choices" id="choices"></div></div>
+ <div class="composer" id="composer"><input id="messageInput" placeholder="给他发一条消息……" maxlength="240"><button class="send" onclick="sendCustom()">➤</button></div>
+ <nav class="nav">
+  <button class="active" data-page="chatPage" onclick="switchPage('chatPage',this)"><span>☏</span>聊天</button>
+  <button data-page="relationship" onclick="switchPage('relationship',this)"><span>♡</span>关系</button>
+  <button data-page="moments" onclick="switchPage('moments',this)"><span>▧</span>动态</button>
+  <button data-page="settings" onclick="switchPage('settings',this)"><span>⚙</span>设置</button>
+ </nav>
+ <div class="modalback" id="modal"><div class="modal"><h3 id="modalTitle">💌 一段回忆</h3><p id="modalText"></p><button class="primary full" onclick="closeModal()">收下这份心动</button></div></div>
+</div>
+<script>
+const SAVE_KEY='heartCallYanAnSaveV2';
+let state={affection:24,turns:0,memories:1,liked:false,proactive:true,nickname:'闫桉',messages:[],chapter:1,streak:1,lastDate:new Date().toDateString()};
+const initial=[
+ {who:'them',text:'刚结束今天的练习。脑子里还在循环刚才的音乐，终于能稍微休息一下了。'},
+ {who:'them',text:'你呢？今天过得怎么样，有没有给自己留一点休息时间？'}
+];
+const storyChoices=[
+ [{label:'“今天有点累，想听你聊聊。”',text:'今天有点累，想听你聊聊。',reply:'那今晚先把烦恼放一边吧。你可以慢慢说，我会认真听。',gain:4},
+  {label:'“记得吃饭，别只顾练习。”',text:'记得吃饭，别只顾练习。',reply:'被你提醒到了，我会去吃点东西。你也要照顾好自己，约好了。',gain:3},
+  {label:'“看到你消息，我很开心。”',text:'看到你消息，我很开心。',reply:'真的吗？那我这条消息发得很值得。你一开心，我也会跟着开心。',gain:5},
+  {label:'“猜猜我现在在想什么？”',text:'猜猜我现在在想什么？',reply:'让我猜猜……是不是在想，怎么才能再多聊一会儿？',gain:4}],
+ [{label:'“想听你分享今天最开心的事。”',text:'想听你分享今天最开心的事。',reply:'今天有一个动作终于练顺了。那一刻会觉得之前的努力没有白费。想把这种好心情也分给你一点。',gain:4},
+  {label:'“如果现在能出去散步就好了。”',text:'如果现在能出去散步就好了。',reply:'听起来很舒服。想象一下，晚风、路灯，还有不用赶时间的一小段路。',gain:5},
+  {label:'“我今天有件事想跟你说。”',text:'我今天有件事想跟你说。',reply:'嗯，我在听。你可以按自己的节奏说，不用着急。',gain:4},
+  {label:'“你会不会偶尔也想逃离忙碌？”',text:'你会不会偶尔也想逃离忙碌？',reply:'忙的时候会想按下暂停键吧。不过休息一下，再回来做喜欢的事，也挺好的。',gain:3}]
+];
+let proactiveTimer=null;
+function nowTime(){return new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false})}
+function setClock(){document.getElementById('clock').textContent=nowTime()}
+function addMessage(text,who='them',opts={}){const item={who,text,time:nowTime(),kind:opts.kind||'text'};state.messages.push(item);renderMessage(item);saveGame(false);return item}
+function renderMessage(m){const wrap=document.createElement('div');wrap.className='msg '+(m.who==='me'?'me':'them');if(m.who!=='me'){const a=document.createElement('div');a.className='mini';a.textContent='✦';wrap.appendChild(a)}const inner=document.createElement('div');inner.className='wrap';const b=document.createElement('div');if(m.kind==='voice'){b.className='voice';b.innerHTML='<span>▶</span><span class="wave">▂▅▃▆▂</span><span>语音消息 · '+(m.duration||'8')+'″</span>';b.onclick=()=>showToast('语音播放功能将在接入真实音频后开放')}else{b.className='bubble';b.textContent=m.text}inner.appendChild(b);const stamp=document.createElement('div');stamp.className='stamp';stamp.textContent=m.time||nowTime();inner.appendChild(stamp);wrap.appendChild(inner);document.getElementById('messages').appendChild(wrap);const page=document.getElementById('chatPage');page.scrollTop=page.scrollHeight}
+function renderAll(){document.getElementById('messages').innerHTML='';state.messages.forEach(renderMessage);document.getElementById('headerName').textContent=state.nickname+' · 私聊';document.getElementById('nicknameInput').value=state.nickname;updateStats();renderChoices();document.getElementById('notifyBtn').textContent='主动消息：'+(state.proactive?'开启':'关闭');document.getElementById('saveInfo').textContent='存档状态：本地自动保存 · '+state.messages.length+' 条消息'}
+function renderChoices(){const list=storyChoices[Math.min(state.chapter-1,1)];const box=document.getElementById('choices');box.innerHTML='';list.forEach((c,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=c.label;b.onclick=()=>choose(i);box.appendChild(b)})}
+function choose(i){const c=storyChoices[Math.min(state.chapter-1,1)][i];addMessage(c.text,'me');document.getElementById('typing').style.display='block';setTimeout(()=>{document.getElementById('typing').style.display='none';addMessage(c.reply);gain(c.gain);state.turns++;if(state.turns>=2&&state.chapter===1){state.chapter=2;state.memories=Math.max(state.memories,2);document.getElementById('storyLabel').textContent='第二章 · 夜晚散步';document.getElementById('chapterText').textContent='第二章：夜晚散步。你们开始分享更日常的心情。';renderChoices();showToast('📖 解锁第二章：夜晚散步')}saveGame(false)},650)}
+function sendCustom(){const input=document.getElementById('messageInput');const t=input.value.trim();if(!t)return;input.value='';addMessage(t,'me');const lower=t.toLowerCase();let reply='我在认真看。然后呢？如果你愿意，可以多跟我讲一点今天的事。';if(/累|难过|烦|不开心|压力/.test(t))reply='辛苦了。今天不必把所有事情都处理好，先喘口气也没关系。我在这里听你说。';else if(/喜欢|想你|爱你|心动/.test(t))reply='这句话让我有点不好意思……不过，谢谢你愿意把心情告诉我。';else if(/吃|饭|饿/.test(t))reply='收到，我会记得吃东西。你也别忘了照顾好自己，好吗？';else if(/晚安|睡觉|困/.test(t))reply='那就早点休息吧。希望你今晚睡得安稳，明天也有一点值得期待的小事。';else if(/工作|上班|学习|考试/.test(t))reply='听起来你今天有不少事情。一步一步来就好，不需要一次做到完美。';document.getElementById('typing').style.display='block';setTimeout(()=>{document.getElementById('typing').style.display='none';addMessage(reply);gain(2);state.turns++;saveGame(false)},700)}
+function gain(n){state.affection=Math.min(100,state.affection+n);updateStats();showToast('♡ 心动指数 +'+n);saveGame(false)}
+function updateStats(){document.getElementById('affectionText').textContent=state.affection+' / 100';document.getElementById('affectionBar').style.width=state.affection+'%';document.getElementById('stage').textContent=state.affection<35?'刚刚熟悉':state.affection<60?'暧昧升温':state.affection<80?'双向心动':'特别的人';document.getElementById('streak').textContent='第 '+state.streak+' 天';document.getElementById('memoryCount').textContent=state.memories+' 段'}
+function switchPage(id,btn){['chatPage','relationship','moments','settings'].forEach(k=>document.getElementById(k).style.display=k===id?'block':'none');const chat=id==='chatPage';document.getElementById('storybar').style.display=chat?'block':'none';document.getElementById('composer').style.display=chat?'flex':'none';document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===btn));document.getElementById('presence').textContent=chat?'在线 · 虚构恋爱模拟':({relationship:'关系进度',moments:'他的模拟动态',settings:'自定义你的体验'}[id])}
+function showToast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>e.style.display='none',1900)}
+function showModal(title,text){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;document.getElementById('modal').style.display='flex'}
+function showMemory(){const text=state.memories>1?'他把练习结束后的夜景分享给你：“今晚的风很舒服，想把这片刻记下来。”':'你们还在慢慢熟悉。多聊几次，就能解锁新的剧情回忆。';showModal('📷 回忆相册',text)}
+function startStory(){switchPage('chatPage',document.querySelector('[data-page="chatPage"]'));if(state.chapter===1){addMessage('如果你还没睡，我们可以聊聊今天。今天有没有什么小事，让你觉得还不错？');}else{addMessage('我刚刚路过一家还亮着灯的小店，突然想到：如果有空的话，你会想去哪儿散散步？')}showToast('主线剧情已继续')}
+function likeMoment(){if(!state.liked){state.liked=true;document.getElementById('likeBtn').textContent='♥ 已点赞';gain(1)}else showToast('你已经点过赞啦')}
+function fakeCall(){showModal('📞 来电模拟','闫桉（虚构剧情）正在尝试联系你……这只是剧情弹窗，尚未接入真实通话或音频。');}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function saveNickname(){const v=document.getElementById('nicknameInput').value.trim();if(!v)return;state.nickname=v;document.getElementById('headerName').textContent=v+' · 私聊';saveGame(false);showToast('昵称已保存')}
+function toggleProactive(){state.proactive=!state.proactive;document.getElementById('notifyBtn').textContent='主动消息：'+(state.proactive?'开启':'关闭');saveGame(false);showToast(state.proactive?'主动消息已开启':'主动消息已关闭')}
+function sendProactive(manual=false){if(!state.proactive&&!manual)return;const pool=['刚刚听到一首很适合夜晚的歌，想分享给你。','今天也辛苦啦。希望你现在能稍微放松一下。','突然想到刚才聊到的话题，想问问你后来怎么样了。','我准备休息一会儿。你今天有没有好好照顾自己？'];const msg=pool[Math.floor(Math.random()*pool.length)];addMessage(msg);if(manual)showToast('收到一条新的模拟消息 💌')}
+function saveGame(show){try{localStorage.setItem(SAVE_KEY,JSON.stringify(state));document.getElementById('saveInfo').textContent='存档状态：本地自动保存 · '+state.messages.length+' 条消息';if(show)showToast('存档已保存到当前设备')}catch(e){if(show)showToast('当前浏览器无法保存存档')}}
+function loadGame(){try{const raw=localStorage.getItem(SAVE_KEY);if(raw){const saved=JSON.parse(raw);state={...state,...saved};return true}}catch(e){}return false}
+function importSave(event){const file=event.target.files&&event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);if(!parsed||!Array.isArray(parsed.messages)||typeof parsed.affection!=='number')throw new Error('invalid');state={...state,...parsed};saveGame(false);renderAll();showToast('存档导入成功 💗')}catch(e){showToast('存档文件无法识别，请选择本游戏导出的 JSON 文件')}event.target.value=''};reader.readAsText(file)}
+function exportSave(){const text=JSON.stringify(state,null,2);const blob=new Blob([text],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='heart-call-save.json';a.click();URL.revokeObjectURL(url);showToast('已导出存档文件')}
+function resetGame(){if(!confirm('确定重新开始吗？当前本地剧情进度将被重置。'))return;localStorage.removeItem(SAVE_KEY);state={affection:24,turns:0,memories:1,liked:false,proactive:true,nickname:'闫桉',messages:[],chapter:1,streak:1,lastDate:new Date().toDateString()};initial.forEach(m=>state.messages.push({...m,time:nowTime()}));renderAll();switchPage('chatPage',document.querySelector('[data-page="chatPage"]'));showToast('已开启新的恋爱故事')}
+document.getElementById('messageInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendCustom()});
+function boot(){setClock();setInterval(setClock,30000);const existed=loadGame();if(!existed){initial.forEach(m=>state.messages.push({...m,time:nowTime()}));saveGame(false)}else{const today=new Date().toDateString();if(state.lastDate!==today){state.streak++;state.lastDate=today;state.messages.push({who:'them',text:'早呀。新的一天开始了，今天也一起加油吧。',time:nowTime()});saveGame(false)}}renderAll();document.getElementById('dateLine').textContent=new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric'})+' · '+nowTime();if(state.proactive)proactiveTimer=setInterval(()=>{if(document.visibilityState==='visible'&&Math.random()>.58)sendProactive(false)},90000)}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveGame(false)});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+boot();
+</script>
+</body>
+</html>
