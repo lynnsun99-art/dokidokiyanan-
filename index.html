@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8e8ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="心动来电"><link rel="manifest" href="manifest.webmanifest?v=7.3"><title>心动来电 · v8 离线.2</title>
+<style>
+:root{--pink:#d86f98;--pink2:#f7dce7;--bg:#fff8fb;--ink:#3d2e37;--muted:#9c8792;--line:#f0dce5;--white:#fff;--green:#a9c6a1}*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#fbeaf1,#eee8f8);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);display:flex;justify-content:center;min-height:100vh;padding:12px}.phone{width:100%;max-width:430px;height:min(900px,calc(100dvh - 24px));min-height:620px;background:var(--bg);border:7px solid #342b31;border-radius:38px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 22px 65px #5d38512b;position:relative}.status{height:34px;flex-shrink:0;background:#fff;padding:8px 20px 0;display:flex;justify-content:space-between;font-size:12px;font-weight:750}.apphead{background:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.apphead h1{font-size:17px;margin:0}.tiny{font-size:11px;color:var(--muted)}.view{display:none;flex:1;overflow:auto}.view.active{display:block}.home{padding:18px 17px;background:linear-gradient(180deg,#f9e5ee,#fff8fb 62%);min-height:100%}.greeting{font-size:13px;color:#9a6e83}.hero{margin:10px 0 18px;padding:19px;border-radius:24px;background:linear-gradient(135deg,#f2bfd2,#f8e5ed 60%,#e8dff7);position:relative;overflow:hidden}.hero h2{font-size:23px;margin:0 0 8px}.hero p{font-size:12px;line-height:1.7;margin:0;max-width:240px}.heart{position:absolute;right:17px;top:20px;font-size:60px;opacity:.65}.relationship{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:17px;padding:13px 15px;margin-bottom:18px}.meter{height:6px;border-radius:8px;background:#f4e4eb;margin-top:8px;overflow:hidden}.meter span{display:block;height:100%;background:linear-gradient(90deg,#ed9cba,#cb5d8b);width:36%;transition:width .3s}.sectiontitle{font-size:14px;font-weight:800;margin:18px 0 10px}.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px}.appicon{border:0;background:transparent;color:var(--ink);font:inherit;text-align:center;padding:0;cursor:pointer}.appicon .ico{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:25px;margin:0 auto 6px;box-shadow:0 4px 12px #8e5d7012}.appicon small{font-size:11px}.pink{background:#f5d6e2}.lav{background:#e8def7}.cream{background:#f7e7ca}.sage{background:#dfead9}.coral{background:#f6d2d0}.whitecard{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px;margin-top:16px}.row{display:flex;align-items:center;gap:10px}.avatar{width:43px;height:43px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f4c6d8,#e6dff6);font-size:22px}.grow{flex:1;min-width:0}.btn{border:0;border-radius:14px;padding:12px 15px;background:var(--pink);color:#fff;font-weight:750;font-size:13px;cursor:pointer}.btn.secondary{background:#f8e5ed;color:#8e4765}.btn.full{width:100%;margin-top:10px}.chatlist{padding:12px}.chatperson{display:flex;align-items:center;gap:11px;background:#fff;padding:13px;border-radius:16px;margin-bottom:10px;border:1px solid var(--line);cursor:pointer}.chatbody{height:100%;display:flex;flex-direction:column;background:#fbf4f7}.chatmessages{flex:1;overflow:auto;padding:15px 12px}.day{text-align:center;color:#ad96a1;font-size:10px;margin:7px 0 14px}.bubbleline{display:flex;gap:7px;margin:10px 0;align-items:flex-end}.bubbleline.me{justify-content:flex-end}.bubble{max-width:77%;padding:11px 13px;border-radius:16px;background:#fff;box-shadow:0 2px 7px #8b4f6810;font-size:13px;line-height:1.65;white-space:pre-wrap}.me .bubble{background:#f5d7e3;border-bottom-right-radius:5px}.bubbleline:not(.me) .bubble{border-bottom-left-radius:5px}.sender{font-size:10px;color:var(--muted);margin:0 0 4px 4px}.chatinput{display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid var(--line);padding-bottom:max(10px,env(safe-area-inset-bottom))}.chatinput input{min-width:0;flex:1;border:1px solid var(--line);border-radius:22px;padding:11px 14px;font-size:13px;outline:none}.chathead{display:flex;align-items:center;gap:10px;background:#fff;padding:10px 13px;border-bottom:1px solid var(--line)}.chathead .avatar{width:36px;height:36px}.chathead button{border:0;background:transparent;font-size:20px;color:var(--pink)}.choicearea{padding:9px 12px;background:#fff;display:flex;flex-wrap:wrap;gap:7px;border-top:1px solid var(--line)}.choice{border:1px solid #edc5d6;border-radius:18px;background:#fff7fa;color:#9c4d6d;padding:8px 10px;font-size:11px}.content{padding:17px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:12px}.card h3{font-size:15px;margin:0 0 8px}.card p{font-size:12px;line-height:1.8;color:#75636d}.photo{height:150px;border-radius:15px;background:linear-gradient(145deg,#f1c6d8,#e7e2f8);display:grid;place-items:center;font-size:42px;margin-bottom:10px}.nav{display:flex;justify-content:space-around;align-items:center;flex-shrink:0;background:#fff;border-top:1px solid var(--line);padding:7px 4px max(8px,env(safe-area-inset-bottom))}.nav button{border:0;background:transparent;color:#a18d97;font-size:10px;display:flex;flex-direction:column;gap:4px;align-items:center;min-width:52px}.nav button strong{font-size:21px;font-weight:500}.nav button.on{color:#cb628d;font-weight:800}.notice{font-size:10px;color:#a38c98;line-height:1.6;text-align:center;padding:9px 15px}.toast{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);background:#48333f;color:#fff;border-radius:20px;padding:9px 13px;font-size:11px;display:none;white-space:nowrap}.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;font:inherit;font-size:13px;margin:6px 0 10px}
+
+/* v6 · iOS-inspired visual language */
+:root{--pink:#d76c98;--line:#e9e8f0;--ink:#292834}
+body{background:#e6e7f1;padding:0}
+.phone{height:100dvh;min-height:0;max-width:430px;border:0;border-radius:0;box-shadow:0 10px 60px #1112;background:#f6f5fb}
+.status{height:48px;padding:17px 24px 4px;background:#f8f7fc;color:#222;z-index:2}
+.apphead{background:#f8f7fcbb;backdrop-filter:blur(16px);border-bottom:1px solid #dddde66b}
+.home{background:linear-gradient(155deg,#d7c4ee 0%,#edcfe1 44%,#d9e7fa 100%);padding:22px 19px 40px;min-height:100%}
+.home .greeting{color:#55445f;font-weight:600}
+.hero{background:#ffffff65;backdrop-filter:blur(12px);border:1px solid #fff8;box-shadow:0 7px 20px #82638c18}
+.relationship{background:#ffffffa9;backdrop-filter:blur(12px)}
+.apps{gap:22px 8px}.appicon .ico{width:62px;height:62px;border-radius:16px;box-shadow:0 6px 12px #483b6025;font-size:28px;color:white;text-shadow:0 1px 3px #0002}
+.appicon small{color:#30283a;font-size:12px;font-weight:650;text-shadow:0 1px 2px #fff7}
+.ico.pink{background:linear-gradient(140deg,#6be4a5,#16b66d)}.ico.lav{background:linear-gradient(140deg,#83d4fc,#327df4)}.ico.cream{background:linear-gradient(140deg,#f9c25d,#f18b54)}.ico.sage{background:linear-gradient(140deg,#a39cff,#7766d5)}.ico.coral{background:linear-gradient(140deg,#ffb2c3,#f0668b)}
+.nav{background:#f9f8fce8;backdrop-filter:blur(14px)}
+.home .whitecard{background:#ffffffad}
+.lock{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:space-between;color:#fff;background:linear-gradient(155deg,#6478b8 0%,#b69acb 46%,#eab4c9 100%);padding:55px 20px max(26px,env(safe-area-inset-bottom));text-shadow:0 1px 6px #0003}
+.lock.hidden{display:none}.lockclock{font-size:78px;font-weight:250;letter-spacing:-4px;line-height:1.1}.lockdate{font-size:19px;font-weight:600}.lockcenter{text-align:center}.lockhint{font-size:14px;opacity:.95}.lockbottom{width:100%;text-align:center}.lockbtn{border:0;border-radius:30px;padding:13px 27px;background:#ffffff50;color:white;font-weight:750;backdrop-filter:blur(8px)}
+.pinpanel{display:none;position:absolute;inset:0;z-index:31;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(160deg,#8b91bd,#c9a8c9,#e3b8cb);color:white}.pinpanel.show{display:flex}
+.pindots{display:flex;gap:15px;margin:20px 0 26px}.pindot{width:13px;height:13px;border:1.5px solid white;border-radius:50%}.pindot.on{background:white}
+.pinpad{display:grid;grid-template-columns:repeat(3,70px);gap:14px 20px}.pinpad button{height:70px;border:0;border-radius:50%;background:#ffffff3d;color:white;font-size:29px;backdrop-filter:blur(8px)}
+.pinpanel .pinerror{height:20px;font-size:13px;margin-top:14px}.calloverlay{display:none;position:absolute;inset:0;z-index:40;background:linear-gradient(160deg,#333f64,#74628a,#a26d92);color:white;flex-direction:column;align-items:center;justify-content:space-between;padding:100px 20px 80px}.calloverlay.show{display:flex}.callavatar{font-size:65px;background:#ffffff30;border-radius:50%;padding:22px}.callactions{display:flex;gap:75px}.callactions button{width:70px;height:70px;border:0;border-radius:50%;font-size:30px;color:white}.callaccept{background:#35c76a}.callreject{background:#f04c57}
+.moment-actions{display:flex;gap:8px}.moment-actions button{border:0;background:#f5eaf2;color:#9e5478;border-radius:12px;padding:9px 12px}.smallnote{font-size:12px;color:#766b7b}.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.photo-grid .photo{height:128px;margin:0}
+@media(min-width:600px){body{padding:14px}.phone{height:min(900px,calc(100dvh - 28px));border:6px solid #343039;border-radius:40px}}
+
+.ios-island{border:0;background:#25212a;color:white;border-radius:20px;padding:4px 18px;font-size:10px}
+.ios-control{display:none;position:absolute;inset:34px 0 0;background:#e4dcebeb;backdrop-filter:blur(18px);z-index:40;padding:20px;overflow:auto}
+.ios-control.open{display:block}.ios-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ios-grid button{border:0;background:#fff9;border-radius:20px;padding:22px 10px;color:#42344a;font-size:14px}
+.wall-blue .home{background:linear-gradient(140deg,#c7e1ff,#e6e6ff,#fff)}
+.wall-night .home{background:linear-gradient(140deg,#585071,#ad8cbd,#f7dce9)}
+.ios-widget{display:flex;gap:12px;margin-bottom:15px}.ios-widget>div{flex:1;background:#ffffffbd;padding:14px;border-radius:18px;font-size:12px}
+.ios-widget b{font-size:22px}.ios-emojis{display:flex;gap:8px;padding:7px;background:#fff}.ios-emojis button{border:0;border-radius:10px;background:#f7e8f1;padding:7px 10px}
+.ios-story button{margin-top:9px}.ios-memory{background:#fff;border-radius:16px;padding:12px;margin:10px 0}
+.ios-photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ios-photo{background:linear-gradient(145deg,#f1d7e9,#e5e0fb);border-radius:14px;padding:16px;text-align:center;font-size:12px}
+.ios-post{background:#fff;border-radius:16px;padding:14px;margin:10px 0}.ios-post button{border:0;border-radius:10px;padding:7px;background:#fbe8f1;color:#995674}
+
+/* v8 custom photos: lock screen + home wallpaper + character avatar */
+.lock{background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.03) 48%,rgba(0,0,0,.55)),url("wallpaper.jpg") center center / cover no-repeat !important}
+.home{background:linear-gradient(180deg,rgba(255,248,251,.34),rgba(255,248,251,.83) 54%,rgba(255,248,251,.94)),url("wallpaper.jpg") center top / cover no-repeat !important}
+.avatar,.callavatar{background:#eee url("avatar.jpg") center 35% / cover no-repeat !important;font-size:0 !important;color:transparent !important;overflow:hidden}
+.callavatar{width:118px;height:118px;padding:0 !important;margin:auto;border:3px solid #ffffff88}
+/* v8.3 — editorial / minimalist Instagram-inspired icon system */
+:root{--pink:#8b776e;--ink:#272825;--muted:#777970;--line:#e8e6e0;--bg:#f7f6f2}
+.phone{background:#f8f8f5}
+.status,.apphead,.nav{background:#fafaf8;color:#2a2b28}
+.home{background:linear-gradient(180deg,rgba(247,247,244,.54),rgba(248,247,243,.9)),url('wallpaper.jpg') center center/cover fixed}
+.home .greeting{color:#4a4b45}
+.hero,.relationship,.ios-widget>div,.home .whitecard{background:rgba(255,255,252,.83);border:1px solid rgba(255,255,255,.65);box-shadow:0 5px 20px #35332c12;backdrop-filter:blur(16px)}
+.hero h2{font-weight:580;letter-spacing:.02em}
+.apps{gap:23px 9px}
+.appicon .ico{width:61px;height:61px;border-radius:19px;background:rgba(255,255,253,.88)!important;color:#373b36;text-shadow:none;box-shadow:0 5px 15px #272b261b, inset 0 0 0 1px #ffffffaa;backdrop-filter:blur(15px)}
+.appicon .ico svg{width:29px;height:29px}
+.appicon small{font-size:11px;font-weight:550;color:#30332f;text-shadow:0 1px 6px #fff}
+.nav button.on{color:#6e7567}
+.btn{background:#767b70}
+.btn.secondary{background:#eeefea;color:#51594e}
+.choice{border-color:#d6dbd2;background:#f4f5f1;color:#4e5a50}
+.me .bubble{background:#e2e9dd}
+.chatbody{background:#f3f4f0}
+.ios-emojis button{background:#f0f1ed}
+.story-progress{font-size:11px;color:#7c7d75;letter-spacing:.09em;margin:0 0 14px}
+.story-paragraph{white-space:pre-line;font-size:14px!important;line-height:2.05!important;color:#3c3f39!important}
+.story-scene-label{font-size:11px;color:#888a81;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px}
+.ios-story button{font-weight:550;text-align:left;line-height:1.5}
+
+/* v8.4 calm, editorial relationship dashboard */
+.sim-kicker{font-size:10px;letter-spacing:.2em;color:#898b83;margin-bottom:10px}
+#simStage{font-size:27px;font-weight:550;letter-spacing:.02em;margin:5px 0 12px}
+#simDescription{line-height:1.8;color:#6f756e}
+#simDays{margin-top:14px;color:#83867e}
+.sim-milestone{padding:11px 0;border-bottom:1px solid #e8eae4;color:#5d655b;font-size:13px}
+#story .card{border:1px solid #e8eae5;background:#fafaf8;border-radius:19px;box-shadow:0 7px 26px #333b3310}
+
+/* v8.6 mobile chat bubble layout */
+.chatmessages{min-width:0}
+.bubbleline{min-width:0;width:100%;align-items:flex-end}
+.bubbleline>div:last-child{min-width:0;max-width:min(82%,330px);width:max-content;flex:0 1 auto}
+.bubbleline.me>div:last-child{margin-left:auto}
+.bubbleline:not(.me)>div:last-child{margin-right:auto}
+.bubble{display:block;width:max-content;max-width:100%;min-width:2.6em;overflow-wrap:anywhere;word-break:normal;white-space:pre-wrap;line-break:strict}
+.bubbleline .sender{white-space:nowrap}
+@media(max-width:480px){body{padding:0;background:#f7f6f2}.phone{height:100dvh;min-height:0;max-width:none;border:0;border-radius:0;box-shadow:none}.status{padding-top:max(8px,env(safe-area-inset-top)) ;height:calc(34px + env(safe-area-inset-top))}}
+
+/* User wallpaper image overrides, with a legible gradient overlay */
+.lock.custom-wallpaper{background-image:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.04) 48%,rgba(0,0,0,.55)),var(--custom-lock-image)!important;background-position:center!important;background-size:cover!important}
+.home.custom-wallpaper{background-image:linear-gradient(180deg,rgba(247,247,244,.46),rgba(248,247,243,.86)),var(--custom-home-image)!important;background-position:center!important;background-size:cover!important;background-attachment:scroll!important}
+</style></head><body><main class="phone"><div class="status"><span id="statusClock">9:41</span><button class="ios-island" onclick="toggleControl()">● 心动来电</button><span>●●● 5G ▰</span></div><header class="apphead"><div><h1>♡ 心动来电</h1><div class="tiny">YAN AN · our little world</div></div><span class="tiny" id="dateLabel">恋爱日常</span></header>
+<section class="view active" id="home"><div class="home"><div class="ios-widget"><div>💕 心动指数<br><b id="iosScore">36</b></div><div>☁️ 我们的约定<br><b>∞</b></div></div><div class="greeting">下午好，我的女朋友 ♡</div><div class="hero"><div class="heart">♡</div><h2>今天也要心动吗？</h2><p>你的专属恋爱手机已准备好。<br>看看他有没有给你发消息吧。</p></div><div class="relationship"><div class="grow"><div style="font-size:12px;font-weight:800">💕 <span id="stage">暧昧升温中</span></div><div class="tiny" style="margin-top:4px">心动值 <b id="score">36</b> / 100</div><div class="meter"><span id="meter"></span></div></div><div style="font-size:24px">💗</div></div><div class="sectiontitle">我的应用</div><div class="apps"><button class="appicon" onclick="openChat()"><span class="ico pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M7 17l-2 2"/></svg></span><small>设置</small></button></div><div class="whitecard row" onclick="openChat()"><div class="avatar">🐰</div><div class="grow"><b style="font-size:13px">闫桉</b><div class="tiny" id="lastMessage">点开看看你们的聊天吧</div></div><span style="color:var(--pink)">›</span></div><div class="notice">虚构粉丝向恋爱模拟 · 非本人运营 · 不代表现实关系</div></div></section>
+<section class="view" id="chats"><div class="chatlist"><div class="sectiontitle">消息</div><div class="chatperson" onclick="openChat()"><div class="avatar">🐰</div><div class="grow"><b style="font-size:13px">闫桉</b><div class="tiny" id="chatPreview">你今天过得怎么样？</div></div><span class="tiny">现在</span></div><div class="chatperson" onclick="toast('这是你们的恋爱备忘录 ♡')"><div class="avatar">💌</div><div class="grow"><b style="font-size:13px">恋爱备忘录</b><div class="tiny">收藏你们的小回忆</div></div></div></div></section>
+<section class="view" id="chat"><div class="chathead"><button onclick="go('chats')">‹</button><div class="avatar">🐰</div><div class="grow"><b style="font-size:13px">闫桉</b><div class="tiny">虚构日常 · 聊天中</div></div><button onclick="incomingCall()">☎</button></div><div class="chatbody"><div class="chatmessages" id="messages"><div class="day">今天 · 属于你们的日常</div></div><div class="ios-emojis"><button onclick="insertEmoji(&#39;🥰&#39;)">🥰</button><button onclick="insertEmoji(&#39;💕&#39;)">💕</button><button onclick="sendVoice()">🎙️语音</button><button onclick="sendPicture()">🖼️照片</button></div><div class="choicearea" id="choices"><button class="choice" onclick="replyChoice('今天发生了一件事想跟你说。')">想跟你分享今天</button><button class="choice" onclick="replyChoice('今天有好好吃饭吗？')">今天有好好吃饭吗？</button><button class="choice" onclick="replyChoice('想听你讲讲今天的事。')">说说你今天的事</button></div><form class="chatinput" id="chatForm"><input id="messageInput" placeholder="给闫桉发消息…" autocomplete="off"><button class="btn">发送</button></form></div></section>
+<section class="view" id="album"><div class="content"><div class="sectiontitle">我们的相册 ♡</div><div class="card"><div class="photo">🌙💗</div><h3>第一次一起看夜景</h3><p>虚构回忆 · 晚风很温柔，你说想把这一刻记下来。</p></div><div class="card"><div class="photo">☕🌸</div><h3>午后咖啡约会</h3><p>虚构回忆 · 两杯饮料、一块蛋糕，还有说不完的话。</p></div><button class="btn full" onclick="saveMemory()">＋ 收藏今天的心动</button><p class="tiny" id="memoryCount"></p><div id="memoryList" class="smallnote"></div><h3>回忆照片墙</h3><div id="iosPhotos" class="ios-photo-grid"></div><input id="iosPhotoName" class="field" placeholder="虚构回忆的名称"><button class="btn full" onclick="addPhoto()">新增回忆卡片</button></div></section>
+<section class="view" id="diary"><div class="content"><div class="sectiontitle">恋爱日记 📔</div><div class="card"><h3>今天的心情</h3><textarea class="field" id="diaryText" rows="5" placeholder="写下今天想对他说的话…"></textarea><button class="btn full" onclick="saveDiary()">保存日记</button></div><div class="card"><h3>之前的日记</h3><div id="diarySaved" class="tiny">这里会显示你保存的日记。</div></div></div></section>
+<section class="view" id="calendar"><div class="content"><div class="sectiontitle">恋爱日历 🗓️</div><div class="card"><h3>你们的纪念日</h3><p>♡ 第一次聊天：今天</p><p>♡ 确定关系：随着日常相处自然发展</p><p>♡ 下一次约会：由你们自己安排</p><button class="btn full" onclick="toast('已加入虚构恋爱日历 ♡')">记住这个约定</button><div class="card"><h3>设置专属纪念日</h3><input id="anniversaryTitle" class="field" placeholder="纪念日名称，例如：第一次约会"><input id="anniversaryDate" type="date" class="field"><button class="btn full" onclick="addAnniversary()">添加纪念日</button></div><div id="anniversaryList"></div></div></section>
+<section class="view" id="story"><div class="content"><div class="sectiontitle">我们的关系 · 日常进行时</div><div class="card"><div class="sim-kicker">RELATIONSHIP DIARY</div><h2 id="simStage">暧昧升温中</h2><p id="simDescription">慢慢熟悉，保持自己的节奏。</p><div class="meter"><span id="simMeter"></span></div><p class="tiny" id="simDays"></p></div><div class="card"><h3>今天的小事</h3><p id="simToday">打开手机，看看有没有新消息。</p><button class="btn full" onclick="openChat()">去找他聊聊</button><button class="btn secondary full" onclick="sendProactive()">模拟收到一条消息</button></div><div class="card"><h3>相处记录</h3><div id="simMilestones"></div><p class="tiny">关系会随着聊天和日常互动慢慢变化。没有固定章节，也没有通关结局。</p></div></div></section><section class="view" id="moments"><div class="content"><div class="sectiontitle">朋友圈 · 只属于我们的日常 🌷</div><div class="card"><div class="row"><div class="avatar">🐰</div><div><b>闫桉</b><div class="smallnote">今天 18:20 · 虚构动态</div></div></div><p>今天的天空还挺好看。随手拍了一张。</p><div class="photo">🌆 🩷</div><div class="moment-actions"><button onclick="likeMoment(0)" id="like0">♡ 点赞</button><button onclick="commentMoment(0)">💬 评论</button></div><div id="comments0" class="smallnote"></div></div><div class="card"><div class="row"><div class="avatar">🐰</div><div><b>闫桉</b><div class="smallnote">昨天 21:08 · 虚构动态</div></div></div><p>今天吃过了hhh。晚上整理一下照片。</p><div class="photo">☕ 🍪</div><div class="moment-actions"><button onclick="likeMoment(1)" id="like1">♡ 点赞</button><button onclick="commentMoment(1)">💬 评论</button></div><div id="comments1" class="smallnote"></div></div><div class="card"><h3>发布我的朋友圈</h3><textarea id="iosPostText" class="field" rows="3" maxlength="280" placeholder="写下今天的心情……"></textarea><button class="btn full" onclick="publishPost()">发布动态</button></div><div id="iosPosts"></div></div></section>
+<section class="view" id="notes"><div class="content"><div class="sectiontitle">备忘录 📝</div><div class="card"><h3>写下想记住的事</h3><textarea class="field" id="noteText" rows="4" placeholder="约会计划、心愿清单、想说的话……"></textarea><button class="btn full" onclick="addNote()">保存备忘录</button></div><div id="notesList"></div></div></section>
+<section class="view" id="settings"><div class="content"><div class="sectiontitle">设置 ⚙️</div><div class="card"><h3>怎么称呼你？</h3><input class="field" id="nickname" placeholder="输入你的昵称"><button class="btn full" onclick="saveNickname()">保存昵称</button></div><div class="card"><h3>自定义模拟手机时间</h3><p class="tiny">只修改游戏里的状态栏与锁屏时间，不影响 iPhone 的真实时间。选择「跟随真实时间」可恢复同步。</p><select id="clockMode" class="field" onchange="setSimClockMode(this.value)"><option value="real">跟随真实时间</option><option value="fixed">固定显示指定时间</option><option value="offset">以指定时间开始，随后正常走时</option></select><input id="clockInput" class="field" type="time" value="09:41"><button class="btn full" onclick="saveSimClock()">保存时间设置</button><p id="clockHint" class="tiny"></p></div><div class="card"><h3>自定义壁纸</h3><p class="tiny">从手机相册选择图片，可以分别设置锁屏和主屏幕壁纸。图片仅存储在当前浏览器，不会上传服务器。</p><label class="btn secondary full" style="display:block;text-align:center">更换锁屏壁纸<input type="file" accept="image/*" hidden onchange="uploadWallpaper(event,'lock')"></label><label class="btn secondary full" style="display:block;text-align:center">更换主屏幕壁纸<input type="file" accept="image/*" hidden onchange="uploadWallpaper(event,'home')"></label><button class="btn secondary full" onclick="resetWallpapers()">恢复默认壁纸</button><p id="wallpaperHint" class="tiny"></p></div><div class="card"><h3>锁屏密码</h3><p>首次使用默认密码为 <b>0000</b>。请在这里改成自己的 4 位数字密码。仅用于游戏锁屏，不是真正的手机安全锁。</p><input class="field" id="newPasscode" type="password" inputmode="numeric" maxlength="4" placeholder="新的 4 位数字密码"><button class="btn full" onclick="changePasscode()">修改密码</button><button class="btn secondary full" onclick="lockNow()">立即锁屏</button></div><div class="card"><h3>存档</h3><p>聊天记录、心动值和日记保存在这台设备的浏览器中。</p><button class="btn full" onclick="exportSave()">导出存档 JSON</button><label class="btn secondary full" style="display:block;text-align:center">导入存档 JSON<input type="file" accept="application/json" hidden onchange="importSave(event)"></label></div><div class="card"><h3>聊天逻辑 · v8.4 免费离线</h3><p>本地离线情景对话：优先区分你在提问、分享自己经历还是表达情绪。暂不接入真正的 AI 模型，因此开放式聊天仍有理解限制；遇到不确定的内容会请你补充，而不是胡乱回答。</p></div><div class="card"><h3>闫桉 · 10月25日 ♏</h3><p>角色生日设定：1996年10月25日，天蝎座。以流行星座印象作为虚构日常灵感：慢热、重视信任、记得细节、亲密后主动撒娇，偶尔会吃醋但尊重彼此边界。</p></div><div class="card"><h3>人物性格 · 公开形象＋恋爱反差</h3><p>游戏设定：初期慢热自然，熟悉后逐渐主动，亲密时会撒娇、偶尔轻微吃醋，但尊重你的选择。不同阶段由心动值决定。此为基于公开形象创作的虚构角色，不代表演员真实私生活。</p></div><div class="card"><h3>🧠 离线聊天记忆</h3><p class="tiny">完全在本机保存，不调用 AI、不上传聊天内容。可以自动记住你明确说过的喜好、称呼、生日、计划等；也能手动添加和删除。</p><div id="offlineMemoryList" class="smallnote"></div><input id="offlineMemoryInput" class="field" maxlength="160" placeholder="例如：我喜欢下雪的冬天"><button class="btn full" onclick="addOfflineMemory()">记住这件事</button><button class="btn secondary full" onclick="clearOfflineMemory()">清除离线聊天记忆</button><p class="tiny">清除这里的记忆不会删除原有聊天、日记、纪念日和锁屏密码。</p></div><div class="card"><h3>模拟 iPhone 壁纸</h3><select id="iosWallpaper" class="field" onchange="changeWallpaper(this.value)"><option value="pink">樱花粉</option><option value="blue">天空蓝</option><option value="night">夜色紫</option></select><button class="btn secondary full" onclick="toggleControl()">打开模拟控制中心</button></div><div class="card"><h3>关于</h3><p>本作品为虚构粉丝向互动游戏，角色对话、恋爱经历和回忆均为创作内容，不代表闫桉本人或其现实私人生活。</p></div></div></section>
+<nav class="nav"><button class="on" data-view="home" onclick="go('home')"><strong>⌂</strong>首页</button><button data-view="chats" onclick="go('chats')"><strong>▤</strong>消息</button><button data-view="album" onclick="go('album')"><strong>♡</strong>回忆</button><button data-view="story" onclick="go('story')"><strong>♡</strong>关系</button></nav><div class="lock" id="lockScreen"><div class="lockcenter"><div style="font-size:24px">🔒</div><div class="lockdate" id="lockDate">星期二 · 11月3日</div><div class="lockclock" id="lockTime">9:41</div></div><div class="lockbottom"><p class="lockhint">♡ 心动来电 · 你的专属恋爱手机</p><button class="lockbtn" onclick="showPin()">向上轻扫 · 输入密码解锁 ⌃</button><p class="smallnote" style="color:#fff">虚构互动游戏</p></div></div><div class="pinpanel" id="pinPanel"><div style="font-size:19px;font-weight:650">输入密码</div><div class="pindots" id="pinDots"><span class="pindot"></span><span class="pindot"></span><span class="pindot"></span><span class="pindot"></span></div><div class="pinpad"><button onclick="pinDigit('1')">1</button><button onclick="pinDigit('2')">2</button><button onclick="pinDigit('3')">3</button><button onclick="pinDigit('4')">4</button><button onclick="pinDigit('5')">5</button><button onclick="pinDigit('6')">6</button><button onclick="pinDigit('7')">7</button><button onclick="pinDigit('8')">8</button><button onclick="pinDigit('9')">9</button><button onclick="pinCancel()">‹</button><button onclick="pinDigit('0')">0</button><button onclick="pinBack()">⌫</button></div><div id="pinError" class="pinerror"></div></div><div class="calloverlay" id="callOverlay"><div style="text-align:center"><div class="callavatar">🐰</div><h1>闫桉</h1><p id="callStatus">模拟来电 · 虚构日常</p></div><div class="callactions"><button class="callreject" onclick="endCall(false)">✕</button><button class="callaccept" id="acceptCallBtn" onclick="acceptCall()">☎</button></div><p style="font-size:12px">文字模拟电话 · 不会拨打真实号码</p></div><div class="ios-control" id="iosControl"><div class="row" style="justify-content:space-between"><h2>控制中心</h2><button class="btn" onclick="toggleControl()">关闭</button></div><div class="ios-grid"><button onclick="toast('模拟 Wi-Fi 已连接')">📶 Wi-Fi</button><button onclick="toast('模拟蓝牙已开启')">ᛒ 蓝牙</button><button onclick="toggleControl();lockNow()">🔒 锁屏</button><button onclick="toggleControl();openChat()">💬 消息</button></div><p class="tiny">这是网页内的模拟控制中心，不会改变真实手机设置。</p></div><div class="toast" id="toast"></div></main>
+<div id="diagnostic" style="display:none;position:fixed;bottom:12px;left:12px;right:12px;z-index:99999;background:#fff4f4;color:#9d1735;border:1px solid #e4a2b3;padding:12px;border-radius:12px;font-size:13px"></div><script>
+window.addEventListener("error",function(e){var d=document.getElementById("diagnostic");if(d){d.textContent="运行错误："+e.message;d.style.display="block"}});
+
+const KEY='yanan_phone_sim_v3';let state={score:36,nickname:'宝贝',messages:[{from:'him',text:'刚忙完。嗯……你今天过得怎么样？'}],memories:0,diary:[],chapter:1,notes:[],anniversaries:[],momentLikes:[false,false],momentComments:[[],[]],memoryEntries:[],passcode:'0000'};try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');if(saved&&typeof saved==='object'){state={...state,...saved};if(!Array.isArray(state.messages))state.messages=[];if(!Array.isArray(state.diary))state.diary=[];if(!Number.isFinite(state.score))state.score=36;if(typeof state.nickname!=='string')state.nickname='宝贝';if(!Array.isArray(state.notes))state.notes=[];if(!Array.isArray(state.anniversaries))state.anniversaries=[];if(!Array.isArray(state.memoryEntries))state.memoryEntries=[];if(!Array.isArray(state.momentLikes))state.momentLikes=[false,false];if(!Array.isArray(state.momentComments))state.momentComments=[[],[]];if(!/^\d{4}$/.test(state.passcode||''))state.passcode='0000';}}catch(e){};if(!Array.isArray(state.v7Posts))state.v7Posts=[];if(!Array.isArray(state.v7Photos))state.v7Photos=[];if(!Array.isArray(state.v7StoryLog))state.v7StoryLog=[];if(!Number.isInteger(state.v7Chapter))state.v7Chapter=0;if(!['pink','blue','night'].includes(state.v7Wallpaper))state.v7Wallpaper='pink';const $=id=>document.getElementById(id);function persist(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){};updateUI()}function updateUI(){ $('score').textContent=state.score;$('meter').style.width=state.score+'%';$('stage').textContent=state.score>=75?'热恋进行时':state.score>=55?'正式恋爱中':state.score>=35?'暧昧升温中':'刚刚心动';$('lastMessage').textContent=state.messages.length?state.messages[state.messages.length-1].text:'还没有消息';$('chatPreview').textContent=$('lastMessage').text;$('memoryCount').textContent='已收藏 '+state.memories+' 条心动回忆';$('diarySaved').innerHTML=state.diary.length?state.diary.slice().reverse().map(x=>'<p>'+escapeHtml(x)+'</p>').join(''):'这里会显示你保存的日记。';renderExtras();$('dateLabel').textContent=state.nickname+'的恋爱日常';renderMessages();renderV7();renderOfflineMemory()}function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function renderMessages(){const el=$('messages');el.innerHTML='<div class="day">今天 · 属于你们的日常</div>'+state.messages.map(m=>'<div class="bubbleline '+(m.from==='me'?'me':'')+'">'+(m.from==='him'?'<div class="avatar" style="width:29px;height:29px;font-size:15px">🐰</div>':'')+'<div><div class="sender">'+(m.from==='him'?'闫桉':escapeHtml(state.nickname))+'</div><div class="bubble">'+escapeHtml(m.text)+'</div></div></div>').join('');el.scrollTop=el.scrollHeight}function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.view===id));if(id==='chat')renderMessages();if(id==='story')renderSimulator();if(id==='moments')renderPosts()}function openChat(){go('chat');if(!state.messages.length){state.messages.push({from:'him',text:'刚刚看到你的消息。你在忙吗？'});persist()}}function toast(s){$('toast').textContent=s;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2100)}function addHim(text){state.messages.push({from:'him',text});persist()}function replyChoice(text){v8Send(text,4)}
+function insertEmoji(emoji){const el=$('messageInput');if(!el)return;const start=el.selectionStart??el.value.length,end=el.selectionEnd??start;el.value=el.value.slice(0,start)+emoji+el.value.slice(end);el.focus();try{el.setSelectionRange(start+emoji.length,start+emoji.length)}catch(e){}}
+function sendVoice(){toast('离线版暂不支持发送真实语音，可用文字聊天')}
+function sendPicture(){toast('离线版暂不支持在聊天中发送真实照片')}
+$('chatForm').addEventListener('submit',e=>{e.preventDefault();let t=$('messageInput').value.trim();if(!t)return;$('messageInput').value='';v8Send(t,2)});
+function sendProactive(){simInit();const msg=simInitiative();state.simLastProactive=Date.now();state.simLastProactiveText=msg;addHim(msg);toast('收到一条模拟消息 ♡')}
+function incomingCall(){ $('callOverlay').classList.add('show');$('callStatus').textContent='模拟来电 · 虚构日常';$('acceptCallBtn').style.display='block'}function acceptCall(){$('callStatus').textContent='通话中 · 闫桉：喂，听得到吗？刚忙完，想和你聊两句。';$('acceptCallBtn').style.display='none';state.score=Math.min(100,state.score+3);state.messages.push({from:'him',text:'刚才聊得挺开心的。等我们都有空，再慢慢说。'});persist()}function endCall(answered){$('callOverlay').classList.remove('show');toast('模拟通话已结束 ♡')}
+function saveMemory(){state.memories++;state.memoryEntries.push(new Date().toLocaleString('zh-CN')+' · 今天的心动');persist();toast('收藏成功，记下这份心动 ♡')}function saveDiary(){let t=$('diaryText').value.trim();if(!t){toast('先写一点今天的心情吧');return}state.diary.push(new Date().toLocaleDateString()+' · '+t);$('diaryText').value='';persist();toast('日记保存好了 ♡')}function saveNickname(){let n=$('nickname').value.trim();if(!n){toast('先输入一个昵称哦');return}state.nickname=n;persist();toast('昵称已保存')}function storyChoice(n){if(n===1){state.messages.push({from:'me',text:'那我们见面吧！我已经开始期待了。'},{from:'him',text:'好，那就说定了。周末见面的时候，想把时间都留给你。'});state.score=Math.min(100,state.score+8)}else{state.messages.push({from:'me',text:'现在就告诉我嘛，我会一直好奇的。'},{from:'him',text:'好吧，其实我只是想说，跟你聊天是我今天最放松的时刻。'});state.score=Math.min(100,state.score+5)}persist();openChat()}function exportSave(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='心动来电存档.json';a.click();URL.revokeObjectURL(a.href)}function importSave(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{state={...state,...JSON.parse(r.result)};persist();toast('存档导入成功')}catch(err){toast('文件格式不正确')}};r.readAsText(f)}
+// v6 extra apps; every user input rendered as text, not HTML.
+function textNode(tag,content){let el=document.createElement(tag);el.textContent=content;return el}
+function renderExtras(){
+ const n=$('notesList');n.replaceChildren();state.notes.slice().reverse().forEach((v,i)=>{let c=document.createElement('div');c.className='card';c.append(textNode('p',v));let b=textNode('button','删除');b.className='btn secondary';b.onclick=()=>{state.notes.splice(state.notes.length-1-i,1);persist()};c.append(b);n.append(c)});
+ const a=$('anniversaryList');a.replaceChildren();state.anniversaries.forEach((v,i)=>{let c=document.createElement('div');c.className='card';let days=Math.ceil((new Date(v.date+'T00:00:00')-new Date())/86400000);c.append(textNode('h3',v.title),textNode('p',v.date+' · '+(days>=0?'还有 '+days+' 天':'已经过去 '+(-days)+' 天')));let b=textNode('button','删除');b.className='btn secondary';b.onclick=()=>{state.anniversaries.splice(i,1);persist()};c.append(b);a.append(c)});
+ const m=$('memoryList');m.replaceChildren();state.memoryEntries.slice(-5).reverse().forEach(v=>m.append(textNode('p','♡ '+v)));
+ for(let i=0;i<2;i++){let b=$('like'+i);b.textContent=state.momentLikes[i]?'♥ 已赞':'♡ 点赞';let c=$('comments'+i);c.replaceChildren();(state.momentComments[i]||[]).forEach(v=>c.append(textNode('p','你：'+v)))}
+}
+function addNote(){let t=$('noteText').value.trim();if(!t)return toast('先写一点内容吧');state.notes.push(t);$('noteText').value='';persist();toast('备忘录已保存')}
+function addAnniversary(){let title=$('anniversaryTitle').value.trim(),date=$('anniversaryDate').value;if(!title||!date)return toast('请填写名称和日期');state.anniversaries.push({title,date});$('anniversaryTitle').value='';$('anniversaryDate').value='';persist();toast('纪念日已添加')}
+function likeMoment(i){state.momentLikes[i]=!state.momentLikes[i];persist()}
+function commentMoment(i){let v=prompt('写一条评论（虚构朋友圈）');if(v&&v.trim()){state.momentComments[i].push(v.trim().slice(0,160));persist()}}
+function changePasscode(){let v=$('newPasscode').value.trim();if(!/^\d{4}$/.test(v))return toast('请输入 4 位数字');state.passcode=v;$('newPasscode').value='';persist();toast('锁屏密码已更新')}
+let pinValue='';function lockNow(){pinValue='';$('pinPanel').classList.remove('show');$('lockScreen').classList.remove('hidden');go('home')}
+function showPin(){pinValue='';$('pinError').textContent='';$('pinPanel').classList.add('show');drawPin()}
+function drawPin(){document.querySelectorAll('.pindot').forEach((d,i)=>d.classList.toggle('on',i<pinValue.length))}
+function pinDigit(n){if(pinValue.length>=4)return;pinValue+=n;drawPin();if(pinValue.length===4){if(pinValue===state.passcode){$('pinPanel').classList.remove('show');$('lockScreen').classList.add('hidden');pinValue=''}else{$('pinError').textContent='密码不正确，请重试';pinValue='';drawPin()}}}
+function pinBack(){pinValue=pinValue.slice(0,-1);drawPin()}
+function pinCancel(){$('pinPanel').classList.remove('show');pinValue=''}
+function refreshClock(){let d=simClockDate();$('lockTime').textContent=d.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false});$('lockDate').textContent=d.toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'})}
+
+
+const personaLines={
+early:{
+ greeting:['刚收工，看到消息就点进来了。你今天怎么样？','我刚把明天的安排看完。嗯……你现在方便聊天吗？'],
+ miss:['你这么突然说这个，我有点不知道怎么接了哈哈。','嗯……其实我也会想起我们之前聊过的话。'],
+ tired:['今天确实有点忙。你呢？也别太累了。','还好，休息一下就好了。你今天是不是也很辛苦？'],
+ care:['有吃饭，放心。你也记得按时吃。','知道啦，我会注意的。你今天吃了什么？'],
+ jealousy:['没有生气，就是有点好奇你们聊了什么。','我是不是问得太多了？你不想说也没关系。'],
+ default:['我刚才想了一下你说的那件事。后来怎么样了？','嗯，我在听。你可以慢慢说。','哈哈，你这个说法还挺有意思的。']
+},
+close:{
+ greeting:['刚忙完。今天有件小事想跟你分享。','刚看完剧本，突然想到你昨天说的那句话。'],
+ miss:['我也想你。不过今天还要忙一会儿，晚点再聊好不好？','你这样说，我都不知道怎么假装淡定了。'],
+ tired:['先休息一下吧。今天有什么让你特别累？','辛苦啦。你要不要先喝点水，等会儿再跟我说？'],
+ care:['有好好吃饭，今天还吃得挺饱。轮到我问你了。','好，听你的。你也别熬夜。'],
+ jealousy:['你刚才一直夸他，我都快插不上话了哈哈。','好吧，有一点点在意。不过我相信你。'],
+ default:['这件事我记住了。下次你再提起，我应该不会忘。','你先说，我听着。','哈哈，和你聊天总能发现些新东西。']
+},
+sweet:{
+ greeting:['刚结束工作。今天有件事第一时间想告诉你。','我忙完啦。你有空吗？想听听你的声音。'],
+ miss:['我也想你。刚才还在想，要不要先发消息。','本来想忍住不说的……其实我也想你了。'],
+ tired:['今天是不是太辛苦了？先休息，等你想说的时候我都听。','那今天就别硬撑啦。要不要我陪你聊一小会儿？'],
+ care:['知道啦，今天有乖乖吃饭。那你呢？','嗯嗯，听你的。你也要照顾好自己。'],
+ jealousy:['你刚才一直夸他……那我能不能也申请一句夸奖？开玩笑的啦。','好吧，我承认有一点点吃醋。不过我相信你，也尊重你的朋友。'],
+ default:['我刚才看到一个东西，第一反应就是想分享给你。','你这么说，我会忍不住笑的。','要不要再陪我聊五分钟？真的就五分钟……大概。']
+}};
+function personaStage(){return state.score>=75?'sweet':state.score>=55?'close':'early'}
+// 天蝎座仅作流行文化中的虚构人物风格参考，不是对真人的性格判断。
+const scorpioFiction={
+ early:{trust:['我觉得有些话慢慢说比较好。等我们更熟一点再聊，好吗？','我不太擅长一开始就把心里话全说出来，不过我有认真听。'],birthday:['10月25日。你居然记得这个日期啊，哈哈。'],reassure:['没事，我没有生气。有什么想法我们可以直接说。']},
+ close:{trust:['你上次说的那件事，我还记得。后来顺利吗？','我可能话不算多，但你认真说过的事，我会放在心上。'],birthday:['10月25日。你是不是偷偷准备了什么？我有点期待了。'],reassure:['我刚才有点在意，不过不是你的问题。我们好好聊聊吧。']},
+ sweet:{trust:['别人可能看不出来，但你一不开心我就会想多问一句。','我想把开心的事第一个分享给你。你也可以这样找我。'],birthday:['10月25日。礼物先不说，我更想知道那天你能不能陪我聊一会儿。'],reassure:['我刚刚是有一点小情绪。不是想管着你，只是想让你知道我在意。']}
+};
+function personaPick(kind){const group=personaLines[personaStage()];const options=(scorpioFiction[personaStage()]||{})[kind]||group[kind]||group.default;return options[Math.floor(Math.random()*options.length)]}
+// Context-aware offline conversation. No external AI or network calls.
+function pickFresh(key,choices){if(!state.v73ReplyCursor)state.v73ReplyCursor={};let n=state.v73ReplyCursor[key]||0;state.v73ReplyCursor[key]=n+1;return choices[n%choices.length]}
+function contextReply(text){
+ const t=String(text||'').trim(),stage=personaStage();
+ const me=/我|自己|今天|刚才|刚刚|朋友|同事|家人|妈妈|爸爸|闺蜜/.test(t);
+ const question=/吗|呢|么|？|\?|是不是|有没有|多少|几号|几点|为什么|怎么|什么|哪里|哪儿|谁/.test(t);
+ const short=/^(嗯|嗯嗯|哦|噢|好|好的|行|哈哈|哈哈哈|晚安|早安|早上好|在吗|你好|嗨|hi|hello|谢谢|谢谢你|对|是的|不是|没有|有|想|不想|可以|不可以|当然|真的|真的吗)[！!。~～ ]*$/.test(t.toLowerCase());
+ const previous=state.messages.slice(0,-1).filter(x=>x.from==='him').slice(-1)[0]?.text||'';
+ let intent='other', answer='';
+ if(/^(在吗|你好|嗨|hi|hello|早安|早上好)/i.test(t)){intent='hello';answer=pickFresh(intent,['在呢，刚看到消息。你今天怎么样？','嗯，我在。今天有什么新鲜事吗？'])}
+ else if(/晚安|睡了|去睡觉/.test(t)&&!/你.*睡|睡了吗/.test(t)){intent='night';answer=pickFresh(intent,['晚安，早点休息。明天再聊。','好，别熬太晚。晚安。'])}
+ else if(/(你|闫桉).{0,5}(生日|几月几号)|生日.{0,5}(哪天|什么时候)|10月25|天蝎|星座/.test(t)){intent='birthday';answer='10月25日。你怎么突然问起这个？哈哈。'}
+ else if(/(你|闫桉).{0,6}(吃饭|吃了吗|吃过|吃什么)|你吃饭了吗|吃了吗/.test(t)){intent='hisfood';answer=pickFresh(intent,['吃过啦，今天吃得还不错。你呢？','刚吃完。你吃了吗？'])}
+ else if(/(你|闫桉).{0,6}(累|忙|辛苦|怎么样|在干嘛|做什么)|你今天干嘛|你今天做了什么/.test(t)){intent='hisday';answer=pickFresh(intent,['今天看了会儿剧本，刚忙完。你今天怎么样？','有一点忙，不过现在可以休息一下。你呢？'])}
+ else if(/(我|今天|刚才).{0,12}(没吃|还没吃|饿了|吃饭|吃了|火锅|烧烤|午饭|晚饭|早餐)/.test(t)){intent='myfood';answer=/没吃|还没吃|饿了/.test(t)?'还没吃吗？先找点东西吃吧，别空着肚子。':'听起来不错啊！好吃吗？'}
+ else if(/(我|今天|刚才).{0,12}(累|加班|工作|上班|压力|难过|伤心|烦|委屈|不开心|失眠)/.test(t)){intent='mytired';answer=pickFresh(intent,['听起来今天挺不容易的。发生什么事了？','辛苦了。想跟我说说具体怎么了吗？'])}
+ else if(/(你|闫桉).{0,6}(想我|喜欢我|爱我)|你会想我/.test(t)){intent='hisfeel';answer=stage==='early'?'嗯……会想起我们聊过的事。你突然问这个，我有点害羞哈哈。':stage==='close'?'会啊，尤其忙完的时候。':'当然会。刚才还想主动给你发消息呢。'}
+ else if(/(我想你|想你了|好想你|我喜欢你|我爱你)/.test(t)){intent='myfeel';answer=stage==='early'?'你这么直接说，我有点不好意思哈哈。':stage==='close'?'我也想你。今天过得怎么样？':'我也想你。等忙完了想好好陪你聊会儿。'}
+ else if(/吃醋|夸.*(男生|帅哥|他)|其他男|别的男/.test(t)){intent='jealous';answer=stage==='early'?'没有生气啦，就是有点好奇。':stage==='close'?'有一点点在意，哈哈。不过你正常交朋友就好。':'有一点点吃醋……但我相信你，开玩笑的。'}
+ else if(/生气|不理我|误会|对不起|抱歉|道歉/.test(t)){intent='conflict';answer='我们可以好好说。你是因为什么觉得不舒服？'}
+ else if(/记得我|记住|秘密|信任/.test(t)){intent='trust';answer='我会认真听你说的。不过如果有重要的事，也可以再提醒我一次。'}
+ else if(/(我|今天|刚才).{0,12}(和朋友|跟朋友|同事|出去玩|逛街|看电影|旅游|去了)/.test(t)){intent='outing';answer='听起来今天挺充实的。你们去哪儿了？'}
+ else if(/谢谢/.test(t)){intent='thanks';answer='不用客气呀。你开心就好。'}
+ else if(/哈哈|笑死|好搞笑/.test(t)){intent='laugh';answer='哈哈，怎么啦？发生什么好笑的事了？'}
+ else if(/^(好|好的|行|可以|当然|嗯|嗯嗯|对|是的)[！!。~～ ]*$/.test(t)&&/你今天|今天怎么样|过得怎么样/.test(previous)){intent='followday';answer='那你今天有没有什么特别想分享的事？'}
+ else if(short){intent='short';answer=pickFresh(intent,['嗯嗯，我在听。','好呀，那你接着说。','哈哈，怎么啦？'])}
+ else if(question){intent='question';answer='这个我还不太确定你想问哪一部分，可以再说具体一点吗？'}
+ else if(me){intent='share';answer=pickFresh(intent,['然后呢？我想听你继续说。','你当时是什么感觉？','原来是这样。后来怎么样了？'])}
+ else {intent='unclear';answer='我可能没完全听懂。你可以换个说法吗？我想认真听。'}
+ state.v73LastIntent=intent;
+ return answer;
+}
+function personaReply(text){return contextReply(text)}
+function personaInitiative(){return personaPick('greeting')}
+
+
+// v8 offline conversation engine: local rule-based memory, not a language model.
+function v8Init(){if(!Array.isArray(state.v8Facts))state.v8Facts=[];if(!state.v8Context||typeof state.v8Context!=='object')state.v8Context={topic:'',question:'',lastReply:''};if(!state.v8Turns||typeof state.v8Turns!=='object')state.v8Turns={}}
+function v8Clean(s){return String(s||'').trim().replace(/[\r\n]+/g,' ').slice(0,180)}
+function v8Fact(label,value,source){v8Init();value=v8Clean(value).replace(/[。！？!?，,]+$/,'');if(!value||value.length>80)return;let idx=state.v8Facts.findIndex(f=>f.label===label);if(idx>=0)state.v8Facts.splice(idx,1);state.v8Facts.push({label,value,source:source||'chat',at:Date.now()});if(state.v8Facts.length>60)state.v8Facts.shift()}
+function v8Remember(text){v8Init();let t=v8Clean(text),m;
+ const patterns=[
+ ['称呼',/(?:我叫|我的名字(?:是|叫)|(?:以后|今后)?(?:叫我|称呼我|你可以叫我))\s*([\u4e00-\u9fa5A-Za-z0-9_·]{1,18})/],
+ ['生日',/(?:我的生日是|我生日是|我出生于)(\d{1,4}年\d{1,2}月\d{1,2}日|\d{1,2}月\d{1,2}日)/],
+ ['喜欢',/(?:我(?:很|特别|最)?喜欢|我爱|我超喜欢)([^，。！？!?]{1,35})/],
+ ['不喜欢',/(?:我(?:很|特别)?不喜欢|我讨厌)([^，。！？!?]{1,35})/],
+ ['所在地',/(?:我(?:现在)?住在|我在)([^，。！？!?]{1,18})(?:生活|住|工作)/],
+ ['计划',/(?:我(?:打算|准备|计划|想要))([^，。！？!?]{2,40})/],
+ ['宠物',/(?:我的(?:猫|狗|宠物)(?:叫|名字是))([^，。！？!?]{1,18})/]
+ ];
+ for(let [label,re] of patterns){m=t.match(re);if(m)v8Fact(label,m[1],'chat')}
+}
+function v8Pick(key,items){v8Init();let n=state.v8Turns[key]||0;state.v8Turns[key]=n+1;return items[n%items.length]}
+function v8Topic(text){let t=String(text||'');if(/吃|饭|早餐|午餐|晚餐|火锅|烧烤|饿/.test(t))return'吃饭';if(/上班|工作|同事|老板|加班|面试/.test(t))return'工作';if(/电影|剧|演戏|演员|拍戏/.test(t))return'影视';if(/睡|晚安|早安|熬夜|困/.test(t))return'休息';if(/朋友|闺蜜|聚会|约会/.test(t))return'朋友';if(/生日|纪念日/.test(t))return'生日';if(/喜欢|讨厌|爱好/.test(t))return'喜好';if(/旅行|旅游|出去玩|去了|城市/.test(t))return'旅行';if(/伤心|难过|累|烦|焦虑|压力/.test(t))return'情绪';return''}
+function v8Recall(q){v8Init();const t=v8Clean(q);let label='';if(/我.*(喜欢什么|爱好是什么)|记得我喜欢/.test(t))label='喜欢';else if(/我.*(不喜欢什么|讨厌什么)/.test(t))label='不喜欢';else if(/(?:我的生日是几号|你记得我的生日|我生日是哪天|我哪天出生)/.test(t))label='生日';else if(/(?:我叫什么|我叫啥|我的名字是什么|你记得我叫什么|你记得我的名字吗)/.test(t))label='称呼';else if(/我.*(住在哪|在哪里生活)/.test(t))label='所在地';else if(/我.*(计划|打算)/.test(t))label='计划';else if(/(?:我的宠物叫什么|我家的猫叫什么|我家的狗叫什么)/.test(t))label='宠物';if(!label)return null;let f=state.v8Facts.slice().reverse().find(f=>f.label===label);return f?'我记得你说过：'+f.value+'。我没记错吧？':'这件事我还没有记下来。你愿意再告诉我一次吗？'}
+
+// v8.2: topic-aware, nonrepeating offline responses; not a generative AI model.
+function v82Choice(key,choices){
+ v8Init();
+ if(!state.v82Recent||typeof state.v82Recent!=='object')state.v82Recent={};
+ let history=state.v82Recent[key]||[];
+ let pool=choices.map((x,i)=>({x,i})).filter(x=>!history.includes(x.i));
+ if(!pool.length){history=[];pool=choices.map((x,i)=>({x,i}))}
+ const n=state.v8Turns[key]||0;
+ // Vary by input and turn count without requiring network access.
+ const picked=pool[(n+Math.floor(Math.random()*pool.length))%pool.length];
+ state.v8Turns[key]=n+1;
+ state.v82Recent[key]=[...history,picked.i].slice(-Math.min(choices.length-1,5));
+ return picked.x;
+}
+function v82Respond(t,topic,choices){
+ let answer=v82Choice(topic,choices);
+ let prev=state.v8Context?.lastReply||'';
+ if(answer===prev&&choices.length>1)answer=choices.find(x=>x!==prev)||answer;
+ return answer;
+}
+function v82Detail(t){
+ let x=t.match(/(?:吃了|吃的是|点了|买了|看了|去了|看到|遇到|养了|喜欢)([^，。！？!?]{2,20})/);
+ return x?x[1].replace(/^(?:一只|一个|一份)/,'').slice(0,14):'';
+}
+function v8Reply(t){
+ v8Init();t=v8Clean(t);
+ let old=state.v8Context||{},topic=v8Topic(t),stage=personaStage(),answer='',question='';
+ const has=(re)=>re.test(t);
+ const pick=(key,items)=>v82Respond(t,key,items);
+ const userQuestion=has(/[?？]|吗[呀啊呢]?|怎么|为什么|多少|哪里|什么|是不是|有没有/);
+ const askingHim=has(/(?:你|闫桉).{0,12}(?:吃|睡|忙|累|想|喜欢|爱|生日|星座|做|干|在|去|看)/);
+ const neg=has(/没|不|别|无/);
+ const detail=v82Detail(t);
+ const recall=v8Recall(t);
+ // v8.5: intent-first handlers, before generic recall and fallback rules.
+ const intro=t.match(/^(?:我叫|我的名字(?:叫|是)|你(?:以后|今后)?(?:叫我|喊我)|以后(?:叫我|喊我))\s*([\u4e00-\u9fa5A-Za-z0-9_·]{1,18})(?:[。！!～~ ]*)$/);
+ const rename=t.match(/^(?:我不叫|别叫我)\s*([\u4e00-\u9fa5A-Za-z0-9_·]{1,18})/);
+ const directName=/(?:我叫什么|我叫啥|我的名字是什么|你记得我叫什么|你记得我的名字吗)/.test(t);
+ if(intro&&!directName){
+   const name=intro[1];v8Fact('称呼',name,'chat');state.nickname=name;
+   answer=pick('intro',[''+name+'？好，记住了哈哈','好，以后就叫你'+name,'原来叫'+name+'。名字很好听']);
+   question='intro';
+ }else if(old.question==='intro'&&state.v8Facts.some(f=>f.label==='称呼'&&f.value.toLowerCase()===t.toLowerCase())){
+   answer=pick('confirmName',['嗯，'+t+'，我记住了','知道啦 '+t+'哈哈']);question='intro';
+ }else if(rename){
+   answer='啊，我记错了。那我应该怎么叫你？';question='intro';
+ }else if(directName){
+   let f=state.v8Facts.slice().reverse().find(f=>f.label==='称呼');
+   if(!f){const m=state.messages.slice(0,-1).reverse().filter(x=>x.from==='me').map(x=>x.text.match(/^(?:我叫|我的名字(?:叫|是))\s*([\u4e00-\u9fa5A-Za-z0-9_·]{1,18})[。！!～~ ]*$/)).find(Boolean);if(m){v8Fact('称呼',m[1],'chat-history');f=state.v8Facts.slice(-1)[0]}}
+   answer=f?'当然记得，'+f.value+'。':'你还没告诉我怎么称呼你呢。';question='intro';
+ }else if(/^(?:下雪了|下雪啦|下雪了！|下雪了!|下雪|开始下雪了|外面下雪了|今天下雪了|下大雪了|下小雪了|飘雪了|飘雪啦)[。！!～~ ]*$/.test(t)||/(?:下雪|飘雪|雪花|积雪|雪好大)/.test(t)){
+   answer=pick('snow',['下雪了？你那边已经开始下了吗❄️','真的假的，好想看看哈哈。有拍照片吗？','哇，外面冷不冷？记得穿暖和一点','雪大吗？路上小心点']);question='weather';
+ }else if(/(?:下雨|雨好大|开始下雨|淋雨)/.test(t)){
+   answer=pick('rain',['下雨了啊。你带伞了吗？','雨大不大？你现在在外面吗','今天适合在家待着哈哈','别淋湿了，回去记得换衣服']);question='weather';
+ }else if(/(?:好冷|冷死|冻死|降温|零下)/.test(t)){
+   answer=pick('cold',['这么冷啊。多穿一点','你现在在外面吗？','回去喝点热的吧哈哈']);question='weather';
+ }else if(/(?:好热|热死|高温|出汗)/.test(t)){
+   answer=pick('hot',['这么热吗，记得喝水','有空调吗哈哈','别在外面晒太久']);question='weather';
+ }else if(/^(?:我在|我住在|我现在在)([^，。！？!?]{2,24})$/.test(t)){
+   const place=t.match(/^(?:我在|我住在|我现在在)([^，。！？!?]{2,24})$/)[1];
+   v8Fact('所在地',place,'chat');
+   answer=pick('location',['你在'+place+'呀。那边今天怎么样？','哦，'+place+'。我记住了','那边最近天气怎么样？']);question='location';
+ }else if(/^(?:我今天|今天我|刚刚我).{0,20}(?:很开心|好开心|特别开心|超开心)/.test(t)){
+   answer=pick('happy',['发生什么好事啦哈哈','这么开心啊，跟我分享一下','听起来今天很不错诶']);question='feel';
+ }else if(/^(?:我叫|我的名字是)/.test(t)){
+   answer='我想记住你的名字，再告诉我一遍好吗？';question='intro';
+ }
+ else  if(recall)answer=recall;
+ else if(has(/你(?:还)?记得|还记得吗|上次说过/)){
+   let f=state.v8Facts.slice(-1)[0];
+   answer=f?'我记得你说过'+f.value+'。是这件事吗？':'我怕记错了，你提醒我一下是哪件事？';
+ }
+ else if(has(/(?:你|闫桉).{0,8}(?:生日|星座)/))answer='10月25日。怎么突然问这个哈哈';
+ else if(has(/^(在吗|嗨|你好|hi|hello|早上好|早安)/i))answer=pick('hello',['在呢','我在。今天怎么样','刚好看到消息了哈哈']);
+ else if(has(/晚安|我去睡了|先睡了/)&&!askingHim)answer=pick('night',['晚安，早点睡','好，手机放下吧哈哈。晚安','晚安～明天聊']);
+ else if(has(/(?:你|闫桉).{0,12}(?:吃了吗|吃饭了吗|吃过了吗|吃什么)/))answer=pick('askHisFood',['吃过啦 你呢','今天吃得挺简单的。你吃什么了','吃了哈哈，你有好好吃饭吗']);
+ else if(has(/(?:你|闫桉).{0,12}(?:在干嘛|做什么|忙什么|累不累)/))answer=pick('askHisDay',['刚忙完 在休息','在看点东西哈哈。你呢','没干什么，刚坐下来']);
+ else if(has(/(?:你|闫桉).{0,10}(?:喜欢我|想我|爱我)/))answer=stage==='early'?pick('flirtEarly',['怎么突然问这个哈哈','你这个问题有点突然','嗯……你猜']):pick('flirtClose',['想啊','你是不是故意问我的哈哈','有想。今天怎么突然问这个']);
+ else if(has(/我想你|好想你|想见你|我喜欢你/))answer=stage==='early'?pick('missEarly',['突然这样说哈哈','我看到了，有点不知道怎么回','嗯……我也挺开心的']):pick('missClose',['我也想你了','那今天多聊一会儿','怎么啦 突然这么想我']);
+ else if(has(/吃醋|其他男生|别的男生/))answer=pick('jealous',['有一点好奇而已哈哈','没事，你正常交朋友就好','我当然会在意一点，不过相信你']);
+ else if(has(/我.*(?:没吃|还没吃|饿了|肚子饿)/)) {answer=pick('hungry',['还没吃吗？先找点东西吃','那先吃饭，别饿着','想吃什么？我帮你想想']);question='food'}
+ else if(has(/(?:我|今天|刚才).{0,24}(?:吃了|吃过|吃饭|火锅|烧烤|拉面|寿司|麦当劳|汉堡|炸鸡|蛋糕|奶茶)/)){
+   answer=pick('foodShare',[detail?'吃了'+detail+'啊 好吃吗':'好吃吗', '不错诶，突然有点饿了哈哈', '今天吃得不错嘛', '有照片吗👀']);question='food';
+ }
+ else if(has(/(?:我|今天|刚才).{0,30}(?:好累|累死|压力|难过|委屈|焦虑|失眠|烦|崩溃|不开心)/)){
+   answer=pick('feelShare',['怎么啦，今天发生什么了','今天很辛苦吗','先休息一下吧。想说的话我听着','是不是工作上的事？']);question='feel';
+ }
+ else if(has(/(?:我|今天|刚才).{0,30}(?:猫|小狗|狗狗|小鸟|宠物)/)){
+   answer=pick('petShare',['好小只吗哈哈','有照片吗👀','它在干嘛','听起来好可爱哈哈']);question='pet';
+ }
+ else if(has(/(?:我|今天|刚才).{0,30}(?:下雨|淋雨|鞋湿|刮风|下雪|好冷|好热)/)){
+   answer=pick('weatherShare',['啊？那你现在到家了吗','外面这么夸张吗','那快换件干的衣服','今天出门真的不容易哈哈']);question='weather';
+ }
+ else if(has(/(?:我|今天|刚才).{0,30}(?:看了电影|追剧|看电视剧|看电影)/)){
+   answer=pick('watchShare',['看了什么呀','好看吗','有推荐的吗 我也想看看']);question='watch';
+ }
+ else if(has(/(?:我|今天|刚才).{0,30}(?:和朋友|跟朋友|逛街|出去玩|旅游|去了|散步)/)){
+   answer=pick('outingShare',['去哪玩了','玩得开心吗','今天有什么有意思的事吗','听着还不错哈哈']);question='outing';
+ }
+ else if(has(/^(?:嗯|嗯嗯|对|是|是的|好|好的|可以|当然|没错)[！!。~～ ]*$/)){
+   const follow={food:['那你下次还想吃吗','哈哈 有点馋了'],feel:['嗯，我听着','要不要再说一点'],pet:['它叫什么呀','哈哈 我想看看照片'],weather:['现在暖和一点了吗','那你先休息会儿'],watch:['你最喜欢谁','那我有空也看看'],outing:['下次还想去吗','听起来很开心'],day:['今天还有什么新鲜事吗','嗯嗯 我在听']};
+   answer=pick('follow-'+(old.question||'day'),follow[old.question]||follow.day);question=old.question||'day';
+ }
+ else if(has(/^(?:不是|没有|不对|才不是)[！!。~～ ]*$/))answer=pick('correction',['噢，我理解错了哈哈','那你说，我听着','啊 是我搞错了']);
+ else if(has(/^(?:哈哈|哈哈哈|笑死|hhh)[！!。~～ ]*$/i))answer=pick('laugh',['哈哈哈','怎么这么开心','笑什么呢哈哈']);
+ else if(has(/谢谢|谢啦/))answer=pick('thanks',['没事～','不客气哈哈','小事']);
+ else if(userQuestion){
+   if(has(/怎么办|怎么做|如何/))answer=pick('advice',['你现在有几个选择呀？我们一起想想','先说说具体发生什么了','我想听完整一点，怕给你出错主意']);
+   else if(askingHim)answer=pick('askHimOther',['这个问题有点难回答哈哈 你先说说你的想法','怎么突然好奇这个','嗯……你具体想问哪方面']);
+   else answer=pick('askOther',['你说的是哪件事呀','这个我还不太确定，你再说具体一点','等一下，我怕理解错了哈哈']);
+ }
+ else if(topic==='喜好')answer=pick('like',['你是怎么喜欢上的','这个我记下了哈哈','听起来你真的很喜欢']);
+ else if(topic==='工作')answer=pick('work',['工作还顺利吗','今天工作发生什么了','忙完了吗']);
+ else if(topic==='影视')answer=pick('film',['你在看什么呀','好看吗','哪个片段印象最深']);
+ else if(topic==='旅行')answer=pick('travel',['那里好玩吗','有拍照片吗','最喜欢哪儿']);
+ else if(topic==='朋友')answer=pick('friend',['你们今天干嘛了','哈哈 玩得怎么样','听着挺热闹']);
+ else if(topic==='情绪')answer=pick('mood',['怎么了','我在听','今天不太顺利吗']);
+ else if(t.length<5)answer=pick('short',['嗯嗯','怎么啦','我在听','哈哈 然后呢']);
+ else answer=pick('general',['这句我没完全听懂，你能多说一点吗？','我有点好奇，你说的具体是什么呀？','等等，我怕理解错了。你再讲一点？']);
+ v8Remember(t);
+ state.v8Context={topic:topic||old.topic||'',question:question||((userQuestion||has(/谢谢/))?'':old.question||''),lastReply:answer};
+ return answer;
+}
+function v8Send(text,bonus){let t=v8Clean(text);if(!t)return;simInit();state.simLastInteraction=Date.now();state.simChats++;state.simTodayTopic=t.slice(0,70);state.messages.push({from:'me',text:t});state.score=Math.min(100,state.score+(bonus||2));state.messages.push({from:'him',text:v8Reply(t)});persist()}
+function addOfflineMemory(){let t=$('offlineMemoryInput').value.trim();if(!t)return toast('先写下想记住的事');v8Fact('手动记忆',t,'manual');$('offlineMemoryInput').value='';persist();toast('已保存在本机')}
+function clearOfflineMemory(){if(!confirm('清除 v8 自动/手动聊天记忆？不会删除旧聊天记录。'))return;state.v8Facts=[];state.v8Context={topic:'',question:'',lastReply:''};persist()}
+function renderOfflineMemory(){v8Init();let el=$('offlineMemoryList');if(!el)return;el.replaceChildren();if(!state.v8Facts.length){el.textContent='还没有记忆。可以聊天或手动添加。';return}state.v8Facts.forEach((f,i)=>{let row=document.createElement('div');row.style.cssText='display:flex;gap:6px;align-items:center;margin:6px 0;padding:7px;border-radius:10px;background:#fff';let txt=document.createElement('span');txt.style.flex='1';txt.textContent=(f.label==='手动记忆'?'📝 ':'♡ ')+f.value;let btn=document.createElement('button');btn.textContent='删除';btn.className='btn secondary';btn.style.padding='6px';btn.onclick=()=>{state.v8Facts.splice(i,1);persist()};row.append(txt,btn);el.append(row)})}
+
+const chapters=[{"title":"第一章 · 夜里的消息","scenes":[{"label":"23:17 / 未读消息","text":"窗外的车声渐渐远了。你刚把手机放到枕边，屏幕亮了一下。\n\n闫桉：还没睡吗\n\n你盯着那行字看了一会儿。其实你们白天没有聊几句，他似乎刚结束工作。","choices":[["还没，你刚忙完？","嗯，刚结束。今天时间过得有点快哈哈。你呢，今天怎么样？"],["本来要睡了，被你抓到了","那我是不是来得不太巧哈哈。要不说一句晚安就放你睡。"]]},{"label":"23:24 / 小小分享","text":"他没有急着结束话题，反而发来一张窗外路灯的照片。\n\n闫桉：路上看到的\n闫桉：感觉今天的灯有点像电影里的画面\n\n照片并不特别，但你能想象他停下来拍照的样子。","choices":[["你还会注意这些呀","偶尔吧。看到了就想拍一下。"],["你拍得还挺有氛围感","哈哈 谢谢夸奖。下次拍到好看的再给你看。"]]},{"label":"23:38 / 认真听你说","text":"你提起今天发生的一件小事。本以为他会随便回个表情，结果几分钟后收到了两条消息。\n\n闫桉：我刚刚看完了\n闫桉：所以你当时是有点委屈对吧\n\n他没有替你做决定，只是认真确认你的感受。","choices":[["嗯，其实就是想有人听听","我在听。你想继续说也可以。"],["被你发现了","哈哈 我猜的。那后来怎么样了？"]]},{"label":"00:02 / 晚安","text":"时间已经过了零点。\n\n闫桉：再聊你明天要起不来了\n闫桉：先睡吧\n\n你想起自己明天的安排，忍不住笑了一下。","choices":[["那你也早点休息","好，听你的。晚安。"],["再聊五分钟好不好","五分钟哈哈。那你想说什么？"]]}]},{"title":"第二章 · 不定时翻翻相册","scenes":[{"label":"午后 / 一张照片","text":"午后，他发来一张随手拍的照片：一杯饮料、桌角的阳光，还有窗外的树影。\n\n闫桉：不定时翻翻相册\n闫桉：发现这张还没发过\n\n你看着照片，突然想知道他拍下这一刻的原因。","choices":[["这是什么时候拍的","前几天。那天阳光挺好的。"],["怎么有种旅行博主的感觉","哈哈哈 那我还差一个专业相机。"]]},{"label":"傍晚 / 小狗出镜","text":"紧接着又是一张小狗的照片。白白的一团，几乎占满屏幕。\n\n闫桉：今天这位很上镜\n\n你注意到小狗嘴角像在笑。","choices":[["它也太可爱了吧","是不是哈哈。一直跑来跑去的。"],["你是不是偷拍了好多张","被你发现了。确实拍了不少。"]]},{"label":"晚上 / 你的照片","text":"他问你今天有没有拍照。你翻了翻相册，找到一张并不完美、却很喜欢的街景。\n\n闫桉：这张挺好\n闫桉：你当时在想什么\n\n他似乎更好奇照片背后的故事。","choices":[["当时觉得特别放松","那这张照片很值得留着。"],["就是随手拍的哈哈","随手拍也挺好。很有生活感。"]]},{"label":"深夜 / 小小约定","text":"你们聊起以后想拍下的东西：冬天的雪、街角的小店、夜晚的灯。\n\n闫桉：可以做个相册\n闫桉：慢慢往里面放\n\n这个提议不隆重，却让人有点期待。","choices":[["那就从今天开始","好。第一张已经有了。"],["以后还要拍很多很多","哈哈 那内存得准备够。"]]}]},{"title":"第三章 · 有在好好吃饭吗","scenes":[{"label":"12:08 / 午餐检查","text":"午饭时间，他忽然发来消息。\n\n闫桉：随时抽查\n闫桉：有在好好吃饭吗\n\n你刚忙完一件事，还没决定吃什么。","choices":[["还没，正在纠结吃什么","那先去吃。今天想吃热的还是凉的？"],["吃啦，你呢","我也吃过了哈哈。吃的什么？"]]},{"label":"12:21 / 选择困难","text":"你列出两家店，他一本正经地分析起来，最后又发来一句。\n\n闫桉：其实看哪个离你近\n\n你被这个过于务实的答案逗笑了。","choices":[["你这也太实际了","哈哈哈 主要是饿的时候不想走太远。"],["我决定吃拉面","可以啊。吃完告诉我好不好吃。"]]},{"label":"19:40 / 晚餐分享","text":"晚些时候，你给他发了一张晚饭照片。\n\n闫桉：看起来不错\n闫桉：这个是什么\n\n他没有突然转移话题，而是仔细问了你照片里的一道菜。","choices":[["是我最喜欢的那家店","那看来是真的好吃。下次还会去吗？"],["下次有机会一起吃","好啊。到时候你负责推荐哈哈。"]]},{"label":"22:15 / 关心的方式","text":"你说今天忙得有点累。他隔了一会儿回复。\n\n闫桉：那早点休息\n闫桉：明天记得吃早餐\n\n没有长篇安慰，但你知道他记住了今天的事。","choices":[["知道啦，你也是","好。互相监督哈哈。"],["你怎么总检查我吃饭","因为你刚刚说自己忙得忘了吃啊。"]]}]},{"title":"第四章 · 雨天的计划","scenes":[{"label":"周六 / 天气预报","text":"原本说好下午散步，窗外却突然下起雨。\n\n闫桉：我看了天气\n闫桉：好像要下一下午\n\n他发来一张乌云密布的天空照片。","choices":[["那我们的计划怎么办","可以换个室内的地方。你想去哪？"],["下雨也挺浪漫的","哈哈 是挺有氛围的，就是别淋感冒了。"]]},{"label":"14:30 / 咖啡馆","text":"你们最后选了一家小咖啡馆。窗边还有两个空位，雨水在玻璃上划出细细的线。\n\n他低头看菜单，忽然抬眼问你：要不要试试这个？","choices":[["听你的推荐","那我先点。不好喝可别怪我哈哈。"],["我要热可可","可以，今天喝点热的。"]]},{"label":"15:12 / 一场小雨","text":"雨小了一些。你们从咖啡馆出来，发现路边积水映着灯牌。\n\n他举起手机拍了张照片，又给你看屏幕。\n\n闫桉：你看这个倒影","choices":[["像电影画面一样","对吧。我刚刚也这么想。"],["拍照技术有进步哦","谢谢老师评价哈哈。"]]},{"label":"17:05 / 回家的路","text":"分别前，他确认你带好了东西。\n\n闫桉：到家发个消息\n\n你走了几步，回头时发现他还站在原地。","choices":[["好，你也路上小心","好。到家跟我说一声。"],["今天很开心","我也是。下次挑个晴天吧。"]]}]},{"title":"第五章 · 忙碌与误会","scenes":[{"label":"周三 / 没有回复","text":"你发出的消息停留在上午。到了傍晚，他才回复。\n\n闫桉：今天一直在忙\n闫桉：抱歉 现在才看到\n\n你原本有些失落，却也想听听他的解释。","choices":[["我有点担心你","抱歉让你担心了。下次忙的时候我尽量提前说。"],["没关系，你先休息","谢谢。你今天过得怎么样？"]]},{"label":"19:18 / 说清楚","text":"你认真告诉他，自己并不需要随时回复，只是不喜欢毫无消息地等待。\n\n他停顿了一会儿。\n\n闫桉：我明白你的意思了","choices":[["那我们以后提前说一声","好。这样都不用猜。"],["我也会尊重你的工作时间","谢谢你理解。不过你的感受也很重要。"]]},{"label":"20:02 / 一点幽默","text":"气氛缓和后，他发来一张晚餐照片。\n\n闫桉：补交今天的生活报告\n\n你一下笑出了声。","choices":[["报告收到哈哈哈","那我算通过检查了吗。"],["这份报告内容有点少","哈哈 那我下次多拍两张。"]]},{"label":"22:10 / 重新靠近","text":"临睡前，他又发来一条消息。\n\n闫桉：今天谢谢你直接告诉我\n\n你意识到，关系里的靠近并不是没有误会，而是愿意把话说清楚。","choices":[["我也谢谢你认真听","嗯。以后有事就说开。"],["那我们和好了？","本来也没想跟你吵架哈哈。"]]}]},{"title":"第六章 · 夏天的颜色","scenes":[{"label":"周末 / 花店","text":"路过一家花店时，他被一盆绿色植物吸引。\n\n闫桉：夏天的颜色\n\n你们在门口看了很久，最后他认真研究起了养护说明。","choices":[["你想把它带回去吗","有一点。不过得先想想能不能养好。"],["你居然还会看养护说明","当然哈哈。不能只看它好看。"]]},{"label":"午后 / 公园","text":"阳光从树叶之间落下来。你们在长椅上坐了一会儿，谁也没有急着说话。\n\n他忽然问：你喜欢这样的周末吗？","choices":[["喜欢，慢慢的就很好","嗯，我也觉得。"],["下次我们去看海吧","可以。挑个天气好的时候。"]]},{"label":"傍晚 / 路边小猫","text":"回程时，你们看到一只躲在阴影里的小猫。\n\n闫桉：好小只啊\n\n你们没有靠得太近，只远远看它伸了个懒腰。","choices":[["真的好小哈哈","它好像刚睡醒。"],["希望它平平安安","嗯，希望有人好好照顾它。"]]},{"label":"晚上 / 记住今天","text":"他发来几张今天拍的照片，其中一张是你们走过的街道。\n\n闫桉：今天存档完成\n\n你忽然觉得，普通的一天也可以很值得纪念。","choices":[["那我也存档啦","好。以后再翻出来看。"],["今天是我很喜欢的一天","我也是。挺开心的。"]]}]},{"title":"第七章 · 一点点心动","scenes":[{"label":"20:11 / 小小试探","text":"聊天时你开玩笑说，今天有人夸你拍照好看。\n\n闫桉：那说明确实拍得不错\n\n过了一会儿，他又补了一句。\n\n闫桉：我之前也说过吧","choices":[["你这是在争第一名吗","哈哈 没有。就是提醒你一下。"],["你夸的我记得呀","那就好哈哈。"]]},{"label":"21:00 / 彼此的节奏","text":"你们聊起最近的忙碌。你说，有时候自己也需要独处。\n\n他没有觉得被冷落。\n\n闫桉：我懂\n闫桉：每个人都需要自己的时间","choices":[["你也会想一个人待着吗","会啊。安静一下挺好的。"],["谢谢你理解","这有什么。你舒服就好。"]]},{"label":"22:03 / 一句想念","text":"你鼓起勇气说，今天有一点想他。\n\n屏幕上的正在输入持续了几秒。\n\n闫桉：突然这样说哈哈\n闫桉：我也有","choices":[["你是不是害羞了","没有……好吧有一点。"],["那下次早点见面","好。我们找时间。"]]},{"label":"23:16 / 不必急着定义","text":"你们聊到很晚。他说，有些事不用急着给答案。\n\n闫桉：慢慢来就好\n\n你看着那句话，心里反而踏实下来。","choices":[["嗯，我们慢慢来","好。"],["那你可要记得今天说的","记得。不会赖账哈哈。"]]}]},{"title":"第八章 · 星光与以后","scenes":[{"label":"18:30 / 夜景计划","text":"他发来一张傍晚的天空。\n\n闫桉：今天云挺好看\n闫桉：要不要晚点去看夜景\n\n你看了一眼窗外，决定给今天留一点特别的时间。","choices":[["好呀，出发","那我来看看路线。"],["我想带相机","可以啊。今天多拍一点。"]]},{"label":"20:04 / 城市灯光","text":"你们站在高处，看见远处的灯光一盏盏亮起。\n\n风有些凉，他提醒你把外套拉好。\n\n闫桉：那边的灯像不像星星","choices":[["有一点，真的很好看","嗯。今天没白来。"],["我觉得比星星还好看","哈哈 你这个评价很高。"]]},{"label":"20:40 / 未来清单","text":"他问你以后还想去哪些地方。你们在手机备忘录里写下了一个小小的清单。\n\n清单没有截止日期，也不要求立刻完成。","choices":[["冬天想一起看雪","可以。那得穿厚一点。"],["想去很多陌生的城市","好。慢慢来，一个一个去。"]]},{"label":"21:15 / 未完待续","text":"分别前，他认真看着你。\n\n闫桉：今天挺开心的\n闫桉：谢谢你来\n\n你知道故事并没有在这里结束。之后还会有更多普通又珍贵的日子。","choices":[["下次也一起吧","好。说定了。"],["以后还会有很多这样的日子","嗯。以后慢慢积累。"]]}]}];
+
+function storyPosition(){let i=Number.isInteger(state.v83Chapter)?state.v83Chapter:Math.max(0,Math.min(4,state.v7Chapter||0));let step=Number.isInteger(state.v83Step)?state.v83Step:0;return {i:Math.max(0,Math.min(chapters.length,i)),step:Math.max(0,Math.min(3,step))}}
+function renderStoryV7(){
+ const {i,step}=storyPosition(),finished=i>=chapters.length;
+ $('iosStoryTitle').textContent=finished?'尾声 · 故事仍在继续':chapters[i].title;
+ const storyText=$('iosStoryText');storyText.classList.add('story-paragraph');
+ const scene=finished?null:chapters[i].scenes[step];
+ storyText.textContent=finished?'八章故事已经读完。生活还在继续，你们的日常也会有新的篇章。':scene.text;
+ let label=document.getElementById('v83SceneLabel');
+ if(!label){label=document.createElement('div');label.id='v83SceneLabel';label.className='story-scene-label';storyText.before(label)}
+ label.textContent=finished?'THE END':scene.label;
+ let progress=document.getElementById('v83Progress');
+ if(!progress){progress=document.createElement('div');progress.id='v83Progress';progress.className='story-progress';label.before(progress)}
+ progress.textContent=finished?'08 / 08 · 已完成':String(i+1).padStart(2,'0')+' / 08 · 第 '+(step+1)+' / 4 幕';
+ const el=$('iosStoryChoices');el.replaceChildren();
+ if(!finished)scene.choices.forEach((c,j)=>{let btn=document.createElement('button');btn.className='btn full'+(j?' secondary':'');btn.textContent=c[0];btn.onclick=()=>chooseStory(j);el.append(btn)});
+ const log=$('iosStoryLog');log.replaceChildren();
+ (state.v7StoryLog||[]).slice(-12).reverse().forEach(t=>log.append(textNode('p','♡ '+t)));
+ $('chapterTwo').textContent='当前心动值 '+state.score;
+}
+function chooseStory(j){
+ let {i,step}=storyPosition();if(i>=chapters.length)return;
+ const scene=chapters[i].scenes[step],choice=scene.choices[j];if(!choice)return;
+ state.v7StoryLog.push(chapters[i].title+' / '+scene.label+' · '+choice[0]);
+ state.messages.push({from:'me',text:choice[0]},{from:'him',text:choice[1]});
+ state.score=Math.min(100,state.score+(j===0?2:3));
+ step++;if(step>=4){i++;step=0}
+ state.v83Chapter=i;state.v83Step=step;
+ // Preserve the legacy progress field, but v8.3 owns its more granular story progress.
+ state.v7Chapter=Math.min(4,Math.floor(i/2));
+ persist();renderSimulator();toast('进度已保存');
+}
+function resetStory(){
+ if(!confirm('从第一章重玩剧情？聊天记录和其他存档不会清除。'))return;
+ state.v83Chapter=0;state.v83Step=0;state.v7Chapter=0;state.v7StoryLog=[];persist();renderStoryV7();
+}
+function publishPost(){let t=$('iosPostText').value.trim();if(!t)return toast('请先写点内容');state.v7Posts.push({text:t.slice(0,280),date:new Date().toLocaleDateString('zh-CN'),likes:false,comments:[]});$('iosPostText').value='';persist();toast('发布成功')}
+function likePost(i){state.v7Posts[i].likes=!state.v7Posts[i].likes;persist()}
+function commentPost(i){let t=prompt('写一条评论');if(t&&t.trim()){state.v7Posts[i].comments.push(t.trim().slice(0,160));persist()}}
+function renderPosts(){let el=$('iosPosts');el.replaceChildren();state.v7Posts.forEach((p,i)=>{let c=document.createElement('div');c.className='ios-post';c.append(textNode('b',state.nickname+' · '+p.date),textNode('p',p.text));let b=textNode('button',p.likes?'♥ 已赞':'♡ 点赞');b.onclick=()=>likePost(i);let d=textNode('button','💬 评论');d.onclick=()=>commentPost(i);c.append(b,d);p.comments.forEach(t=>c.append(textNode('p','评论：'+t)));el.prepend(c)})}
+function addPhoto(){let t=$('iosPhotoName').value.trim();if(!t)return toast('先输入名称');state.v7Photos.push({title:t.slice(0,80),date:new Date().toLocaleDateString('zh-CN')});$('iosPhotoName').value='';persist();toast('回忆已收藏')}
+function renderPhotos(){let el=$('iosPhotos');el.replaceChildren();state.v7Photos.forEach(p=>{let c=document.createElement('div');c.className='ios-photo';c.append(textNode('div','🌸 📷'),textNode('b',p.title),textNode('p',p.date));el.append(c)})}
+function renderV7(){document.querySelector('.phone').classList.remove('wall-blue','wall-night');if(state.v7Wallpaper!=='pink')document.querySelector('.phone').classList.add('wall-'+state.v7Wallpaper);$('iosWallpaper').value=state.v7Wallpaper;$('iosScore').textContent=state.score;renderSimulator();renderPosts();renderPhotos()}
+
+
+// v8.4 — Offline daily-life simulator. No network/API, no fixed chapters.
+function simInit(){
+ if(!Number.isFinite(state.simStarted))state.simStarted=Date.now();
+ if(!Number.isFinite(state.simChats))state.simChats=0;
+ if(!Array.isArray(state.simMilestones))state.simMilestones=[];
+ if(!Array.isArray(state.simRecentProactive))state.simRecentProactive=[];
+ if(!Number.isFinite(state.simLastProactive))state.simLastProactive=0;
+}
+function simStage(){return state.score>=75?'稳定交往':state.score>=55?'逐渐亲近':state.score>=35?'暧昧升温':'初识阶段'}
+function simInitiative(){
+ simInit();const h=new Date().getHours(),recent=state.simRecentProactive;
+ const memories=Array.isArray(state.v8Facts)?state.v8Facts:[];
+ const facts=memories.filter(f=>f&&f.value&&f.label==='喜欢');
+ let options=h<10?['早呀。今天有什么安排','醒了吗哈哈','早上好，记得吃早餐']:
+ h<14?['中午吃什么','有在好好吃饭吗','我刚忙完一会儿。你呢']:
+ h<19?['今天过得怎么样','刚刚看到一只小狗，好小只啊','下午有点忙。你今天顺利吗']:
+ ['今天怎么样','我在翻相册哈哈。你今天拍照了吗','晚上准备做什么','有在好好吃饭吗'];
+ if(facts.length)options.push('上次你说喜欢'+facts[facts.length-1].value.slice(0,20)+'，最近还有在关注吗');
+ if(state.score>=65)options.push('突然想起你了哈哈。今天忙不忙');
+ let pool=options.filter(x=>!recent.includes(x));if(!pool.length){recent.length=0;pool=options}
+ const chosen=pool[Math.floor(Math.random()*pool.length)];recent.push(chosen);if(recent.length>5)recent.shift();return chosen;
+}
+function simMaybeMessage(){
+ simInit();const now=Date.now(),last=state.simLastProactive;
+ // Only simulate a message on reopening the app after 6h, never spam on every visit.
+ if(now-last<6*3600000)return;
+ const lastUser=state.messages.slice().reverse().find(x=>x.from==='me');
+ const lastMessage=state.messages[state.messages.length-1];
+ if(lastMessage?.from==='him' && state.messages.length>3)return;
+ if(lastUser&&now-(state.simLastInteraction||now)<90*60000)return;
+ state.simLastProactive=now;
+ state.messages.push({from:'him',text:simInitiative()});
+ persist();
+}
+function renderSimulator(){
+ simInit();const stage=simStage(),days=Math.max(1,Math.floor((Date.now()-state.simStarted)/86400000)+1);
+ const desc=stage==='初识阶段'?'先从分享生活开始，不用急着给关系下定义。':stage==='暧昧升温'?'慢慢熟悉，偶尔分享小事，也开始期待彼此的消息。':stage==='逐渐亲近'?'已经习惯互相分享生活，也愿意认真听对方说话。':'相处越来越自然，重要的是彼此尊重和关心。';
+ $('simStage').textContent=stage;$('simDescription').textContent=desc;
+ $('simMeter').style.width=state.score+'%';$('simDays').textContent='一起记录的第 '+days+' 天 · 聊天 '+state.simChats+' 次 · 心动值 '+state.score;
+ $('simToday').textContent=state.simTodayTopic?'最近聊到：'+state.simTodayTopic:'今天还没有新的聊天。去发一条消息吧。';
+ const list=$('simMilestones');list.replaceChildren();
+ const milestones=[['第一次聊天',state.messages.length>0],['开始分享日常',state.simChats>=5],['习惯互相问候',state.simChats>=15],['逐渐亲近',state.score>=55],['稳定相处',state.score>=75]];
+ milestones.forEach(([name,done])=>{const line=document.createElement('p');line.className='sim-milestone';line.textContent=(done?'✓  ':'○  ')+name;list.append(line)});
+}
+// Use sessionStorage only for the current tab: avoid repeatedly triggering on in-app navigation.
+try{if(!sessionStorage.getItem('heart_call_v84_opened')){sessionStorage.setItem('heart_call_v84_opened','1');simMaybeMessage()}}catch(e){}
+
+function refreshStatusClock(){const e=$('statusClock');if(e)e.textContent=simClockDate().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false})}
+refreshStatusClock();setInterval(refreshStatusClock,30000);
+refreshClock();setInterval(refreshClock,30000);
+try{updateUI()}catch(e){document.getElementById('diagnostic').textContent='页面脚本错误：'+e.message;document.getElementById('diagnostic').style.display='block'};if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});}
+
+// v8.7 — custom in-app time and wallpaper, persisted in existing save key.
+function simClockDate(){
+ const cfg=state.simClock||{};
+ if(cfg.mode==='fixed'||cfg.mode==='offset'){
+  const match=/^(\d{2}):(\d{2})$/.exec(cfg.time||'');
+  if(match){const d=new Date();let minutes=Number(match[1])*60+Number(match[2]);
+   if(cfg.mode==='offset'&&Number.isFinite(cfg.savedAt))minutes+=Math.floor((Date.now()-cfg.savedAt)/60000);
+   d.setHours(0,0,0,0);d.setMinutes(minutes);return d;}
+ }
+ return new Date();
+}
+function setSimClockMode(mode){const hint=$('clockHint');if(hint)hint.textContent=mode==='real'?'显示设备当前时间':mode==='fixed'?'始终显示选定时间':'从选定时间开始，随真实时间流逝';}
+function saveSimClock(){
+ const mode=$('clockMode').value,time=$('clockInput').value;
+ if(!['real','fixed','offset'].includes(mode)||!/^([01]\d|2[0-3]):[0-5]\d$/.test(time))return toast('请选择有效时间');
+ state.simClock={mode,time,savedAt:Date.now()};persist();refreshClock();refreshStatusClock();setSimClockMode(mode);toast('模拟手机时间已保存');
+}
+function applyCustomWallpapers(){
+ for(const kind of ['lock','home']){
+  const el=kind==='lock'?$('lockScreen'):document.querySelector('#home .home');if(!el)continue;
+  const data=state.customWallpapers?.[kind];el.classList.toggle('custom-wallpaper',typeof data==='string'&&data.startsWith('data:image/'));
+  if(data)el.style.setProperty('--custom-'+kind+'-image','url("'+data+'")');else el.style.removeProperty('--custom-'+kind+'-image');
+ }
+}
+function uploadWallpaper(event,kind){
+ const file=event.target.files?.[0];event.target.value='';if(!file)return;
+ if(!file.type.startsWith('image/'))return toast('请选择图片文件');
+ if(file.size>20*1024*1024)return toast('图片过大，请选择小于20MB的图片');
+ const img=new Image();const reader=new FileReader();
+ reader.onerror=()=>toast('无法读取图片');reader.onload=()=>{img.onerror=()=>toast('无法打开图片');img.onload=()=>{
+  try{const canvas=document.createElement('canvas'),scale=Math.min(1,1080/Math.max(img.width,img.height));
+   canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));
+   canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+   const data=canvas.toDataURL('image/jpeg',.76);
+   const previous=state.customWallpapers||{};state.customWallpapers={...previous,[kind]:data};
+   try{localStorage.setItem(KEY,JSON.stringify(state));applyCustomWallpapers();$('wallpaperHint').textContent='壁纸已保存到本机';toast('壁纸更换成功')}
+   catch(e){state.customWallpapers=previous;toast('浏览器存储空间不足，请选择更小的图片')}
+  }catch(e){toast('图片处理失败，请换一张图片')}
+ };img.src=reader.result};reader.readAsDataURL(file);
+}
+function resetWallpapers(){delete state.customWallpapers;persist();applyCustomWallpapers();$('wallpaperHint').textContent='已恢复默认壁纸';toast('已恢复默认壁纸')}
+function initVisualSettings(){
+ const cfg=state.simClock||{};if($('clockMode'))$('clockMode').value=cfg.mode||'real';if($('clockInput'))$('clockInput').value=cfg.time||'09:41';
+ setSimClockMode(cfg.mode||'real');applyCustomWallpapers();refreshClock();refreshStatusClock();
+}
+initVisualSettings();
+</script></body></html>
